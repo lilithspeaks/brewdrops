@@ -39,12 +39,36 @@
   <h1>BrewDrops</h1>
   <p>Zero-waste dissolvable coffee pods.</p>
   <p><strong>Coming Soon</strong></p>
-  
-<form action="https://formspree.io/f/movnzpyw" method="POST">
 
-    <input type="email" name="email" placeholder="Enter your email" required />
+  <form id="signupForm" action="https://formspree.io/f/movnzpyw" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required>
     <button type="submit">Notify Me</button>
   </form>
+
+  <!-- Success message -->
+  <p id="successMessage" style="display:none; color:#66ccff; margin-top:15px;">
+    🎉 Thanks for signing up! You’ll be the first to know when we launch.
+  </p>
+
+  <!-- JavaScript to handle form -->
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      fetch(this.action, {
+        method: "POST",
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById("successMessage").style.display = "block";
+          this.reset();
+        } else {
+          alert("Oops! Something went wrong. Please try again.");
+        }
+      }).catch(error => {
+        alert("Network error. Please try again.");
+      });
+    });
+  </script>
 </body>
 </html>
-
