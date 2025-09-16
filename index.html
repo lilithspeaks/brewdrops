@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrewDrops Waitlist</title>
-  <link rel="icon" type="image/png" href="brewdrops logo.png"> <!-- your favicon file -->
+  <link rel="icon" type="image/png" href="brewdrops logo.png">
 
   <style>
     body {
@@ -15,7 +15,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
     .container {
       background: white;
@@ -23,72 +23,87 @@
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 400px;
+      max-width: 600px;
       width: 100%;
     }
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
-    }
-    form input[type="email"] {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    form button {
-      background-color: #6b4226;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    form button:hover {
-      background-color: #5a3620;
-    }
-    .thank-you {
-      display: none;
     }
   </style>
+
+  <!-- === BREVO STYLES (from your snippet) === -->
+  <style>
+    @font-face {
+      font-display: block;
+      font-family: Roboto;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"),
+           url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff");
+    }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 600;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"),
+           url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff");
+    }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 700;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"),
+           url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff");
+    }
+    #sib-container input::placeholder,
+    #sib-container textarea::placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+    #sib-container a { text-decoration: underline; color: #2BB2FC; }
+  </style>
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
   <div class="container">
     <h1>Join the BrewDrops Waitlist</h1>
 
-    <form id="waitlist-form" action="https://formspree.io/f/movnzpyw" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required>
-      <button type="submit">Sign Up</button>
-    </form>
-
-    <div class="thank-you" id="thank-you">
-      <h2>Thank you!</h2>
-      <p>You're on the list. We'll keep you updated.</p>
+    <!-- === BREVO FORM BLOCK (paste from your snippet) === -->
+    <div class="sib-form" style="text-align: center; background-color: #f5ede4;">
+      <div id="sib-form-container" class="sib-form-container">
+        <!-- error + success messages already included -->
+        <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:#fffdf9; max-width:540px; border-radius:25px;">
+          <form id="sib-form" method="POST" action="https://9e412429.sibforms.com/serve/MUIFANo-XWE-SwYCfOiLNePuJ4SHguFMMRHSWUp7v2zjdP2iSLGdjgqOXM-qtQsdAPD7u1IdyVDNWVu9zqxN3-ZeqBi5gHDchkcEwxDtq7DoisaoS_AP02oSaE35lyX6JzQdMYcoXuhn33qxCVJyAesvn3CYktBS5qkKDa61cB-UbjMHLnIGPKTxbViz5fQFHAtCWeV4F-H7pD_6" data-type="subscription">
+            <p style="font-size:24px; font-weight:700; font-family:Georgia, serif; color:#4b2e2a;">Join the Day Ones</p>
+            <p style="font-size:16px; color:#555;">Be the first to try dissolvable, zero-waste coffee pods.</p>
+            <div style="margin:1rem 0;">
+              <label for="FIRSTNAME">Name</label><br>
+              <input type="text" id="FIRSTNAME" name="FIRSTNAME" placeholder="Your name" required style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #ccc;">
+            </div>
+            <div style="margin:1rem 0;">
+              <label for="EMAIL">Email</label><br>
+              <input type="email" id="EMAIL" name="EMAIL" placeholder="Your email" required style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #ccc;">
+            </div>
+            <button type="submit" style="padding:0.75rem 1.5rem; background:#6b4226; color:#fff; border:none; border-radius:20px; font-size:1rem; cursor:pointer;">Save my spot</button>
+          </form>
+        </div>
+      </div>
     </div>
+    <!-- === END BREVO FORM === -->
   </div>
 
+  <!-- === BREVO SCRIPTS === -->
   <script>
-    const form = document.getElementById('waitlist-form');
-    const thankYou = document.getElementById('thank-you');
-
-    form.addEventListener('submit', async function(event) {
-      event.preventDefault();
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.style.display = 'none';
-        thankYou.style.display = 'block';
-      } else {
-        alert('Oops! Something went wrong. Please try again.');
-      }
-    });
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+      "That doesn’t look like a valid email. Try again with something like name@example.com.";
+    window.REQUIRED_ERROR_MESSAGE = "This one’s required.";
+    window.GENERIC_INVALID_MESSAGE =
+      "That doesn’t look like a valid email. Try again with something like name@example.com.";
+    window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected' } };
+    var AUTOHIDE = Boolean(1);
   </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
