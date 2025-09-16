@@ -1,44 +1,81 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrewDrops</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BrewDrops™</title>
 
-  <!-- Favicon (already working) -->
+  <!-- Favicons (make sure these files are in repo root) -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- SEO / Share -->
-  <meta name="description" content="Zero-waste dissolvable coffee drops." />
-  <meta property="og:title" content="BrewDrops" />
-  <meta property="og:description" content="Zero-waste dissolvable coffee drops." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/social-card.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Preload the logo for instant paint -->
-  <link rel="preload" as="image" href="/assets/brewdrops-logo.png">
-
   <style>
-    :root{
-      /* Tweak these to taste */
-      --bg-1:#0e0b09;       /* deep warm charcoal */
-      --bg-2:#1a1411;       /* subtle warmth */
-      --accent:#9a6b3a;     /* titanium-brown shimmer */
-      --text:#f5ede6;       /* soft warm white */
-      --muted:#cfc4bb;
-      --ring: color-mix(in oklab, var(--accent) 60%, white);
-    }
-
-    /* Reset-ish */
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 70% 20%, var(--bg-2), var(--bg-1) 60%) fixed;
-      overflow-x: hidden;
-      -webkit-font-smoothing: ant
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #0f0d0b;
+      color: #f5eee7;
+    }
+    .logo {
+      width: 160px;
+      height: auto;
+      margin: 60px auto 20px;
+      display: block;
+    }
+    h1 { margin: 10px 0; font-size: 2rem; }
+    p.sub { margin: 0 0 30px; color: #cfc4bb; }
+    form {
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 320px;
+    }
+    input[type="email"] {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #999;
+      font-size: 1rem;
+    }
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #9a6b3a;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #b27c43; }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #cfc4bb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img class="logo" src="brewdrops logo.png" alt="BrewDrops logo">
+
+  <!-- Headline -->
+  <h1>BrewDrops™</h1>
+  <p class="sub">Zero-waste dissolvable coffee drops</p>
+
+  <!-- Simple newsletter form (sends email to you) -->
+  <form action="mailto:hello@brewdrops.co" method="post" enctype="text/plain">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> BrewDrops. All rights reserved.
+  </footer>
+
+</body>
+</html>
