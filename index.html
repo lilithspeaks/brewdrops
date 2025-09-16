@@ -17,11 +17,11 @@
     #sib-container a{ text-decoration:underline;color:#2BB2FC}
     /* Page chrome */
     :root {
-  --espresso: #2B1B12; /* darker espresso */
-  --foam: #FFFDF9;
-  --cream: #F5EDE4;
-  --ink: #1c1412;
-}
+      --espresso: #2B1B12; /* darker espresso */
+      --foam: #FFFDF9;
+      --cream: #F5EDE4;
+      --ink: #1c1412;
+    }
 
     html,body{margin:0;padding:0;background:linear-gradient(135deg,var(--cream),#f3e7dd);font-family:Roboto,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:var(--ink)}
     .wrap{min-height:100dvh;display:flex;flex-direction:column}
@@ -32,15 +32,15 @@
     footer{background:var(--espresso);color:#F8F5F2}
     .footer-inner{max-width:1200px;margin:0 auto;padding:32px 16px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}
     .footer-col h4{margin:0 0 8px 0;font-size:14px;letter-spacing:.02em;text-transform:uppercase;opacity:.85}
-    .footer-col ul{list-:none;margin:0;padding:0}
+    .footer-col ul{list-style:none;margin:0;padding:0}
     .footer-col li{margin:.4rem 0}
     .footer-col a{color:#F8F5F2;text-decoration:none;opacity:.9}
     .footer-col a:hover{opacity:1;text-decoration:underline}
     .brandline{display:flex;align-items:center;gap:12px}
-    .brandline img{height:28px; width:auto}
+    .brandline img{height:48px; width:auto} /* bigger logo */
     .payments{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;opacity:.9}
     .payments span{font-size:12px;border:1px solid rgba(248,245,242,.35);border-radius:6px;padding:6px 8px}
-    .subbar{border-top:1px solid rgba(248,245,242,.3);text-align:center;padding:12px 10px;font-size:12px;opacity:.9}
+    .subbar{border-top:1px solid rgba(248,245,242,.3);text-align:center;padding:12px 10px;font-size:12px;opacity:.9;display:block;margin-top:20px}
     @media (max-width:900px){
       .footer-inner{grid-template-columns:1fr 1fr;gap:16px}
     }
@@ -152,16 +152,18 @@
       </div>
 
       <div class="footer-col">
-        <h4>keep in touch</h4>
+        <h4>Keep in touch</h4>
         <ul>
-          <li><a href="https://www.instagram.com/brewdrops.co">Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@brewdrops.co">TikTok</a></li>
-          <li><a href="https://www.linkedin.com/company/brewdrops">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/brewdrops.co" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@brewdrops.co" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.linkedin.com/company/brewdrops" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
-       
+      </div>
+    </div>
     <div class="subbar">© 2025 BrewDrops, Inc. All rights reserved. | Made in the USA 🇺🇸</div>
   </footer>
 </div>
+
 <!-- Brevo footer scripts -->
 <script>
   window.REQUIRED_CODE_ERROR_MESSAGE='Please choose a country code';
@@ -171,7 +173,3 @@
   window.GENERIC_INVALID_MESSAGE="That doesn’t look like a valid email. Try again with something like name@example.com.";
   window.translation={common:{selectedList:'{quantity} list selected',selectedLists:'{quantity} lists selected',selectedOption:'{quantity} selected',selectedOptions:'{quantity} selected'}};
   var AUTOHIDE = Boolean(1);
-</script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-</body>
-</html>
