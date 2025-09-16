@@ -4,117 +4,137 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BrewDrops — Dissolvable Zero-Waste Coffee Pods</title>
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="brewdrops-logo.png"/>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Meta -->
   <meta name="description" content="Introducing the first-ever dissolvable, zero-waste coffee pods." />
-  <meta name="robots" content="index,follow" />
 
   <style>
     :root{
-      /* Coffee palette */
-      --crema:#f1e7dd;
-      --ink:#efe6db;
-      --muted:#d3c8bc;
-      --espresso:#22140e;
-      --mocha:#2B1A11;
-      --roast:#2b1912;
+      /* deeper, neutral coffee tones (less red) */
+      --bean-1:#0b0a09; /* near-black */
+      --bean-2:#14110f; /* deep espresso */
+      --bean-3:#1c1714; /* cacao */
+      --ink:#efe7dd;
+      --muted:#cfc6bb;
       --accent:#7a5236;
       --accent-hover:#5e3e29;
     }
 
     *{ box-sizing:border-box }
     html,body{ height:100% }
+
     body{
       margin:0;
       color:var(--ink);
       font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      /* layered, warm coffee background */
+
+      /* LAYERS:
+         1) vignette + depth with radial gradients
+         2) subtle crema glow near top center
+         3) woven linen crosshatch (two repeating linear gradients)
+         4) ultra-fine noise (SVG turbulence)
+      */
       background:
-        radial-gradient(120% 140% at 50% 0%, var(--mocha) 0%, var(--roast) 55%),
-        radial-gradient(140% 140% at 50% 120%, #180e0a 0%, var(--espresso) 65%);
+        /* soft vignette & depth */
+        radial-gradient(120% 160% at 50% 0%, rgba(255,224,180,0.05) 0%, rgba(0,0,0,0) 35%),
+        radial-gradient(140% 180% at 50% 120%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.0) 60%),
+        linear-gradient(180deg, var(--bean-3) 0%, var(--bean-2) 50%, var(--bean-1) 100%);
+
       position:relative;
       display:flex;
       flex-direction:column;
       min-height:100dvh;
+      overflow-x:hidden;
     }
-    /* subtle grain for sophistication */
-    body::after{
-      content:"";
-      position:fixed; inset:0;
-      pointer-events:none;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.035"/></svg>');
+
+    /* crema halo behind the logo/wordmark (very faint) */
+    .crema {
+      position:fixed;
+      top:-120px; left:50%; transform:translateX(-50%);
+      width:900px; height:900px; pointer-events:none;
+      background:
+        radial-gradient(closest-side, rgba(255,230,190,0.06), rgba(255,230,190,0.0) 70%);
+      filter: blur(18px);
+      z-index:0;
+    }
+
+    /* woven linen crosshatch */
+    .texture {
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      background-image:
+        repeating-linear-gradient(  0deg, rgba(255,255,255,0.015) 0 1px, rgba(0,0,0,0) 1px 5px),
+        repeating-linear-gradient( 90deg, rgba(255,255,255,0.015) 0 1px, rgba(0,0,0,0) 1px 5px);
       mix-blend-mode:soft-light;
     }
 
-    /* Header / hero */
-    header{ padding:64px 20px 28px; text-align:center }
+    /* ultra-fine noise */
+    .noise {
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      background-image: url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240">\
+          <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>\
+          <rect width="100%" height="100%" filter="url(%23n)" opacity="0.025"/>\
+        </svg>');
+      mix-blend-mode:soft-light;
+    }
+
+    header{ padding:80px 20px 28px; text-align:center; position:relative; z-index:1 }
     .logo{
-      width:84px; height:auto; margin:0 auto 14px;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,.35));
+      width:92px; height:auto; margin:0 auto 14px;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
     }
     .wordmark{
       font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-weight:800;
-      font-size: clamp(2.4rem, 7vw, 4.2rem);
-      letter-spacing:.01em;
-      line-height:1.05;
-      margin:0 0 10px;
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      letter-spacing:.01em; line-height:1.04;
+      margin:0 0 8px;
       text-shadow: 0 4px 22px rgba(0,0,0,.35);
     }
     .tagline{
       font: 400 .98rem/1.2 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--muted);
-      display:inline-flex; align-items:center; gap:8px;
-      opacity:.9;
+      display:inline-flex; align-items:center; gap:8px; opacity:.9;
     }
     .dot{ width:5px; height:5px; border-radius:50%; background:var(--muted) }
 
     .hero-line{
-      margin:22px auto 0;
-      max-width:860px;
-      text-align:center;
+      margin:28px auto 0; max-width:860px; text-align:center;
       font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:600;
-      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-      color: var(--ink);
-      letter-spacing:.01em;
+      font-weight:700;
+      font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+      color: var(--ink); letter-spacing:.01em;
     }
 
-    /* Footer signup row */
     footer{
-      margin-top:auto;
-      padding:36px 20px 60px;
-      display:flex; flex-direction:column; align-items:center; gap:12px;
+      margin-top:auto; padding:36px 20px 64px;
+      display:flex; flex-direction:column; align-items:center; gap:12px; z-index:1;
     }
     .signup{
       width:100%; max-width:820px;
-      background: rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.07);
-      border-radius:16px;
-      padding:14px;
+      background: rgba(255,255,255,0.035);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px; padding:14px;
       display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
       backdrop-filter: blur(4px);
     }
     .signup input[type="email"]{
       flex:1 1 320px; min-width:280px; max-width:520px;
-      padding:12px 14px;
-      border-radius:12px; border:1px solid rgba(255,255,255,0.14);
-      background:#15100d; color:var(--ink);
+      padding:12px 14px; border-radius:12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:#12100e; color:var(--ink);
       font: 400 0.98rem/1 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       outline:none;
     }
-    .signup input::placeholder{ color:#a09286 }
+    .signup input::placeholder{ color:#9f968c }
     .signup button{
       padding:12px 16px; border-radius:12px; border:none;
-      background:var(--accent); color:#fff; font-weight:700; cursor:pointer;
+      background:var(--accent); color:#fff; font-weight:800; cursor:pointer;
       transition: background .15s ease, transform .06s ease;
       font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
@@ -122,9 +142,7 @@
 
     .fineprint{
       font: 300 0.9rem/1.5 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: rgba(223,214,204,.75);
-      text-align:center;
-      max-width:820px;
+      color: rgba(223,214,204,.75); text-align:center; max-width:820px;
     }
     .copyright{
       font: 300 0.9rem/1 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -137,6 +155,11 @@
   </style>
 </head>
 <body>
+
+  <!-- background texture layers -->
+  <div class="crema" aria-hidden="true"></div>
+  <div class="texture" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
 
   <header>
     <img src="brewdrops-logo.png" alt="BrewDrops logo" class="logo">
@@ -157,6 +180,5 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
