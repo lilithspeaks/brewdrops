@@ -8,40 +8,41 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="brewdrops-logo.png"/>
 
-  <!-- Font: Space Grotesk (futuristic, clean, easy on eyes) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Basic SEO -->
-  <meta name="description" content="BrewDrops makes zero-waste, dissolvable coffee pods wrapped in edible film. Plastic-free, mess-free, instant café quality at home." />
+  <!-- SEO -->
+  <meta name="description" content="BrewDrops makes zero-waste, dissolvable coffee pods wrapped in edible film. Plastic-free, clean to use, café-level coffee in seconds." />
   <meta name="keywords" content="BrewDrops, dissolvable coffee pods, zero waste coffee, edible film, plastic free coffee, instant espresso, sustainable coffee" />
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="BrewDrops — Zero-Waste Dissolvable Coffee Pods" />
-  <meta property="og:description" content="Plastic-free, dissolvable pods for instant coffee. Drop in, watch it dissolve, enjoy—without the waste." />
+  <meta property="og:description" content="Plastic-free pods wrapped in edible film that dissolve cleanly. Effortless coffee, without the waste." />
   <meta property="og:image" content="brewdrops-logo.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://brewdrops.co/" />
 
   <style>
     :root{
-      --bg-deep:#0f0e0d;     /* warm near-black */
-      --bg-soft:#1a1714;     /* soft coffee brown */
+      --bg-deep:#0f0e0d;
+      --bg-soft:#1a1714;
       --card:#171412;
       --text:#f7f3ed;
       --muted:#c9bfb5;
-      --accent:#7a5236;      /* espresso brown */
+      --accent:#7a5236;
       --accent-hover:#5e3e29;
+      --round-font: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --primary-font: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
     html, body { height: 100%; }
-
     body{
       margin:0;
-      font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: var(--primary-font);
       color: var(--text);
       background:
         radial-gradient(80% 120% at 70% 0%, var(--bg-soft) 0%, var(--bg-deep) 60%),
@@ -69,12 +70,24 @@
       display:block;
       filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
     }
+
+    /* Softer, less dramatic tagline with a cute dot */
     .tagline{
+      font-family: var(--round-font);
       font-size:.95rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+      letter-spacing:.02em;
       color:var(--muted);
-      opacity:.9;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .cute-dot{
+      width:6px; height:6px;
+      border-radius:50%;
+      background: rgba(201,191,181,.9);
+      box-shadow: 0 0 6px rgba(201,191,181,.35);
+      display:inline-block;
+      transform: translateY(1px);
     }
 
     main{
@@ -88,12 +101,13 @@
       text-align:center;
     }
 
-    /* SEO-first content up top */
     h1{
       font-size: clamp(1.75rem, 2.6vw, 2.4rem);
       margin:8px 0 6px;
       line-height:1.15;
     }
+
+    /* Effortlessly-elegant lede */
     .lede{
       max-width:720px;
       font-size: clamp(1rem, 1.4vw, 1.125rem);
@@ -102,7 +116,6 @@
       margin:0 auto 8px;
     }
 
-    /* Card section for the newsletter */
     .card{
       width:100%;
       max-width:720px;
@@ -132,10 +145,9 @@
       color:var(--text);
       outline:none;
       font-size:1rem;
+      font-family: var(--primary-font);
     }
-    .newsletter input::placeholder{
-      color:#9b8f84;
-    }
+    .newsletter input::placeholder{ color:#9b8f84; }
     .newsletter button{
       padding:12px 16px;
       border-radius:12px;
@@ -145,15 +157,19 @@
       font-weight:600;
       cursor:pointer;
       transition: transform .06s ease, background .18s ease;
+      font-family: var(--primary-font);
     }
     .newsletter button:hover{
       background:var(--accent-hover);
       transform: translateY(-1px);
     }
+
+    /* Softer legal line tone & rounded font */
     .legal{
       margin-top:10px;
-      font-size:.85rem;
-      color:#a99f96;
+      font-size:.9rem;
+      color:#b8aea4;
+      font-family: var(--round-font);
     }
 
     footer{
@@ -164,7 +180,6 @@
       font-size:.95rem;
     }
 
-    /* Reduce motion for sensitive users */
     @media (prefers-reduced-motion: reduce){
       * { animation: none !important; transition: none !important; }
     }
@@ -175,15 +190,19 @@
   <header>
     <div class="brand">
       <img src="brewdrops-logo.png" alt="BrewDrops logo">
-      <div class="tagline">live simply · simply live</div>
+      <div class="tagline">
+        <span>live simply</span>
+        <span class="cute-dot" aria-hidden="true"></span>
+        <span>simply live</span>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- SEO-first heading + description at the top -->
     <h1>Zero-Waste, Dissolvable Coffee Pods</h1>
     <p class="lede">
-      BrewDrops are plastic-free pods wrapped in edible, water-soluble film. Instant café-level coffee with less mess and zero waste.
+      Plastic-free pods wrapped in edible film that dissolve cleanly in your cup. 
+      Café-level coffee in seconds—elegant to use, light on the planet.
     </p>
 
     <section class="card" aria-labelledby="updates-title">
@@ -192,7 +211,7 @@
         <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address">
         <button type="submit">Be the First to Find Out</button>
       </form>
-      <div class="legal">No spam. Unsubscribe anytime.</div>
+      <div class="legal">We’ll only send the good stuff—product news and launch dates.</div>
     </section>
   </main>
 
@@ -201,7 +220,6 @@
   </footer>
 
   <script>
-    // Auto-update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
