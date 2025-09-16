@@ -13,25 +13,32 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
- .container {
-  background: transparent; /* no white box */
-  padding: 2rem;
-  text-align: center;
-  max-width: 600px;
-  width: 100%;
-}
-
+    .container {
+      background: transparent; /* no white box */
+      padding: 2rem;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
     }
+    footer {
+      margin-top: 2rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
   </style>
 
-  <!-- === BREVO STYLES (from your snippet) === -->
+  <!-- === BREVO STYLES === -->
   <style>
     @font-face {
       font-display: block;
@@ -60,36 +67,48 @@
       color: #c0ccda;
     }
     #sib-container a { text-decoration: underline; color: #2BB2FC; }
+    /* optional clean-up */
+    .sib-form { background: transparent !important; box-shadow: none !important; }
+    #sib-container { background: transparent !important; border: 0 !important; }
+    .sib-container--large { max-width: 640px !important; }
   </style>
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
   <div class="container">
     <h1>Join the BrewDrops Waitlist</h1>
+    <p>Introducing the first ever dissolvable zero-waste coffee pods.</p>
+  </div>
 
-    <!-- === BREVO FORM BLOCK (paste from your snippet) === -->
-    <div class="sib-form" style="text-align: center; background-color: #f5ede4;">
+  <!-- === BREVO FORM BLOCK IN FOOTER === -->
+  <footer>
+    <div class="sib-form" style="text-align:center;">
       <div id="sib-form-container" class="sib-form-container">
-        <!-- error + success messages already included -->
-        <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:#fffdf9; max-width:540px; border-radius:25px;">
+        <!-- Success/Error messages built in -->
+        <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; max-width:540px; border-radius:25px;">
           <form id="sib-form" method="POST" action="https://9e412429.sibforms.com/serve/MUIFANo-XWE-SwYCfOiLNePuJ4SHguFMMRHSWUp7v2zjdP2iSLGdjgqOXM-qtQsdAPD7u1IdyVDNWVu9zqxN3-ZeqBi5gHDchkcEwxDtq7DoisaoS_AP02oSaE35lyX6JzQdMYcoXuhn33qxCVJyAesvn3CYktBS5qkKDa61cB-UbjMHLnIGPKTxbViz5fQFHAtCWeV4F-H7pD_6" data-type="subscription">
             <p style="font-size:24px; font-weight:700; font-family:Georgia, serif; color:#4b2e2a;">Join the Day Ones</p>
             <p style="font-size:16px; color:#555;">Be the first to try dissolvable, zero-waste coffee pods.</p>
+
             <div style="margin:1rem 0;">
               <label for="FIRSTNAME">Name</label><br>
               <input type="text" id="FIRSTNAME" name="FIRSTNAME" placeholder="Your name" required style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #ccc;">
             </div>
+
             <div style="margin:1rem 0;">
               <label for="EMAIL">Email</label><br>
               <input type="email" id="EMAIL" name="EMAIL" placeholder="Your email" required style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #ccc;">
             </div>
+
             <button type="submit" style="padding:0.75rem 1.5rem; background:#6b4226; color:#fff; border:none; border-radius:20px; font-size:1rem; cursor:pointer;">Save my spot</button>
+
+            <input type="text" name="email_address_check" value="" class="input--hidden">
+            <input type="hidden" name="locale" value="en">
           </form>
         </div>
       </div>
     </div>
-    <!-- === END BREVO FORM === -->
-  </div>
+  </footer>
 
   <!-- === BREVO SCRIPTS === -->
   <script>
