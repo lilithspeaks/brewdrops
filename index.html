@@ -1,73 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrewDrops</title>
-  <link rel="icon" type="image/png" href="brewdrops-logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BrewDrops — Zero-Waste Dissolvable Coffee Pods</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="brewdrops-logo.png"/>
+
+  <!-- Font: Space Grotesk (futuristic, clean, easy on eyes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Basic SEO -->
+  <meta name="description" content="BrewDrops makes zero-waste, dissolvable coffee pods wrapped in edible film. Plastic-free, mess-free, instant café quality at home." />
+  <meta name="keywords" content="BrewDrops, dissolvable coffee pods, zero waste coffee, edible film, plastic free coffee, instant espresso, sustainable coffee" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BrewDrops — Zero-Waste Dissolvable Coffee Pods" />
+  <meta property="og:description" content="Plastic-free, dissolvable pods for instant coffee. Drop in, watch it dissolve, enjoy—without the waste." />
+  <meta property="og:image" content="brewdrops-logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://brewdrops.co/" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: Garamond, serif;
-      background-color: #fffdf9;
-      text-align: center;
+    :root{
+      --bg-deep:#0f0e0d;     /* warm near-black */
+      --bg-soft:#1a1714;     /* soft coffee brown */
+      --card:#171412;
+      --text:#f7f3ed;
+      --muted:#c9bfb5;
+      --accent:#7a5236;      /* espresso brown */
+      --accent-hover:#5e3e29;
     }
-    header {
-      padding: 20px;
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body{
+      margin:0;
+      font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(80% 120% at 70% 0%, var(--bg-soft) 0%, var(--bg-deep) 60%),
+        radial-gradient(100% 100% at 0% 100%, #150f0c 0%, var(--bg-deep) 70%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
     }
-    header img {
-      max-width: 180px;
+
+    header{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      padding:28px 20px 10px;
     }
-    .hero {
-      padding: 100px 20px;
-      background: #f4f2ee;
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+    .brand img{
+      width:min(220px, 45vw);
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
     }
-    .newsletter {
-      margin-top: 40px;
+    .tagline{
+      font-size:.95rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      opacity:.9;
     }
-    .newsletter input[type="email"] {
-      padding: 10px;
-      width: 250px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-      font-family: Garamond, serif;
+
+    main{
+      width:100%;
+      max-width:980px;
+      padding:24px 20px 80px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:28px;
+      text-align:center;
     }
-    .newsletter button {
-      padding: 10px 20px;
-      margin-left: 10px;
-      background-color: #6b4226;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: Garamond, serif;
+
+    /* SEO-first content up top */
+    h1{
+      font-size: clamp(1.75rem, 2.6vw, 2.4rem);
+      margin:8px 0 6px;
+      line-height:1.15;
     }
-    .newsletter button:hover {
-      background-color: #55331d;
+    .lede{
+      max-width:720px;
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      color: var(--muted);
+      line-height:1.6;
+      margin:0 auto 8px;
+    }
+
+    /* Card section for the newsletter */
+    .card{
+      width:100%;
+      max-width:720px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius:18px;
+      padding:22px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .newsletter{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-top:8px;
+    }
+    .newsletter input[type="email"]{
+      flex:1 1 260px;
+      min-width:260px;
+      max-width:420px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:#0f0e0f;
+      color:var(--text);
+      outline:none;
+      font-size:1rem;
+    }
+    .newsletter input::placeholder{
+      color:#9b8f84;
+    }
+    .newsletter button{
+      padding:12px 16px;
+      border-radius:12px;
+      border:none;
+      background:var(--accent);
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .06s ease, background .18s ease;
+    }
+    .newsletter button:hover{
+      background:var(--accent-hover);
+      transform: translateY(-1px);
+    }
+    .legal{
+      margin-top:10px;
+      font-size:.85rem;
+      color:#a99f96;
+    }
+
+    footer{
+      width:100%;
+      padding:30px 20px 50px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* Reduce motion for sensitive users */
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="brewdrops-logo.png" alt="BrewDrops Logo">
+    <div class="brand">
+      <img src="brewdrops-logo.png" alt="BrewDrops logo">
+      <div class="tagline">live simply · simply live</div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to BrewDrops</h1>
-    <p>Zero-waste, dissolvable coffee pods. Just drop, stir, and sip.</p>
-    
-    <div class="newsletter">
-      <form action="#" method="post">
-        <input type="email" placeholder="Enter your email" required>
+  <main>
+    <!-- SEO-first heading + description at the top -->
+    <h1>Zero-Waste, Dissolvable Coffee Pods</h1>
+    <p class="lede">
+      BrewDrops are plastic-free pods wrapped in edible, water-soluble film. Instant café-level coffee with less mess and zero waste.
+    </p>
+
+    <section class="card" aria-labelledby="updates-title">
+      <h2 id="updates-title" style="margin:0 0 6px; font-size:1.25rem;">Get updates on our first drop</h2>
+      <form class="newsletter" action="#" method="post">
+        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address">
         <button type="submit">Be the First to Find Out</button>
       </form>
-    </div>
-  </section>
+      <div class="legal">No spam. Unsubscribe anytime.</div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> BrewDrops. All rights reserved.
+  </footer>
+
+  <script>
+    // Auto-update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
