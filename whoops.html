@@ -1,1 +1,36 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Whoops — BrewDrops</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <style>
+    :root { --espresso:#2B1B12; --cream:#F5EDE4; }
+    body {
+      margin:0; font-family: system-ui, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--cream), #f3e7dd);
+      color: var(--espresso); min-height: 100vh; display:grid; place-items:center;
+    }
+    .card {
+      background:#fffdf9; border-radius:20px; padding:40px; max-width:560px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12); text-align:center;
+    }
+    h1 { margin:0 0 10px; font-size:28px; }
+    p { margin:0 0 20px; line-height:1.5; }
+    a.button {
+      display:inline-block; padding:12px 20px; border-radius:20px;
+      background:#6b4226; color:#fff; text-decoration:none; font-weight:700;
+    }
+    a.button:hover { background:#4b2e2a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Whoops — not brewed yet</h1>
+    <p>This page is still steeping. We’ll pour it soon.</p>
+    <a class="button" href="index.html">← Back to BrewDrops</a>
+  </div>
+</body>
+</html>
