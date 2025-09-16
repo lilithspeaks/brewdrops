@@ -2,64 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BrewDrops</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!-- Favicon (already working) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- SEO / Share -->
+  <meta name="description" content="Zero-waste dissolvable coffee drops." />
+  <meta property="og:title" content="BrewDrops" />
+  <meta property="og:description" content="Zero-waste dissolvable coffee drops." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Preload the logo for instant paint -->
+  <link rel="preload" as="image" href="/assets/brewdrops-logo.png">
 
   <style>
+    :root{
+      /* Tweak these to taste */
+      --bg-1:#0e0b09;       /* deep warm charcoal */
+      --bg-2:#1a1411;       /* subtle warmth */
+      --accent:#9a6b3a;     /* titanium-brown shimmer */
+      --text:#f5ede6;       /* soft warm white */
+      --muted:#cfc4bb;
+      --ring: color-mix(in oklab, var(--accent) 60%, white);
+    }
+
+    /* Reset-ish */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    form {
-      display: flex;
-      gap: 10px;
-    }
-
-    input[type="email"] {
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      min-width: 250px;
-    }
-
-    button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      background: #fff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #ccc;
-    }
-
-    #successMessage {
-      display: none;
-      color: #7dd3fc;
-      margin-top: 15px;
-    }
-  </style>
-</head>
-<body>
-  <h1>BrewDrops</h1>
-
-  <form id="signupForm" action="https://formspree.io
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 70% 20%, var(--bg-2), var(--bg-1) 60%) fixed;
+      overflow-x: hidden;
+      -webkit-font-smoothing: ant
