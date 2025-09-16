@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f6f2;
+      background: linear-gradient(135deg, #f9f6f2, #f3e7dd);
       margin: 0;
       padding: 0;
       display: flex;
@@ -17,15 +17,14 @@
       align-items: center;
       min-height: 100vh;
     }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
-    }
+ .container {
+  background: transparent; /* no white box */
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
