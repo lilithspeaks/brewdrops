@@ -15,38 +15,62 @@
     @font-face{font-display:fallback;font-family:Roboto;font-weight:700;src:url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"),url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")}
     #sib-container input::placeholder,#sib-container textarea::placeholder{ text-align:left;font-family:Helvetica, sans-serif;color:#c0ccda}
     #sib-container a{ text-decoration:underline;color:#2BB2FC}
-    /* Page chrome */
-    :root {
-      --espresso: #2B1B12; /* darker espresso */
-      --foam: #FFFDF9;
-      --cream: #F5EDE4;
-      --ink: #1c1412;
+
+    /* ===== Page chrome / palette ===== */
+    :root{
+      --espresso:#2B1B12; /* footer bg */
+      --foam:#FFFDF9;     /* light bg */
+      --cream:#F5EDE4;    /* card bg */
+      --ink:#1c1412;      /* body text */
+      --latte:#6b4226;    /* CTA */
+      --latte-fg:#ffffff; /* CTA text */
     }
 
     html,body{margin:0;padding:0;background:linear-gradient(135deg,var(--cream),#f3e7dd);font-family:Roboto,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:var(--ink)}
     .wrap{min-height:100dvh;display:flex;flex-direction:column}
     main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 16px}
-    /* Keep your Brevo card centered on wide screens */
     .sib-form-container{display:flex;justify-content:center}
-    /* Footer */
+
+    /* ===== Footer ===== */
     footer{background:var(--espresso);color:#F8F5F2}
-    .footer-inner{max-width:1200px;margin:0 auto;padding:32px 16px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}
+    .footer-inner{
+      max-width:1200px;margin:0 auto;
+      padding:32px 16px;
+      display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;
+      align-items:start;
+    }
     .footer-col h4{margin:0 0 8px 0;font-size:14px;letter-spacing:.02em;text-transform:uppercase;opacity:.85}
     .footer-col ul{list-style:none;margin:0;padding:0}
     .footer-col li{margin:.4rem 0}
     .footer-col a{color:#F8F5F2;text-decoration:none;opacity:.9}
     .footer-col a:hover{opacity:1;text-decoration:underline}
+    .footer-col a:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
+
     .brandline{display:flex;align-items:center;gap:12px}
-    .brandline img{height:48px; width:auto} /* bigger logo */
-    .payments{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;opacity:.9}
-    .payments span{font-size:12px;border:1px solid rgba(248,245,242,.35);border-radius:6px;padding:6px 8px}
-    .subbar{border-top:1px solid rgba(248,245,242,.3);text-align:center;padding:12px 10px;font-size:12px;opacity:.9;display:block;margin-top:20px}
+    .brandline img{height:48px;width:auto}
+    .tagline{margin:.6rem 0 0 0;opacity:.9}
+
+    .subbar{
+      border-top:1px solid rgba(248,245,242,.28);
+      text-align:center;padding:12px 10px;font-size:12px;opacity:.9;display:block;margin-top:4px
+    }
+
+    /* Desktop breathing room */
+    @media (min-width:1024px){
+      .footer-col a{display:inline-block;padding:2px 0}
+    }
+
+    /* Tablet */
     @media (max-width:900px){
       .footer-inner{grid-template-columns:1fr 1fr;gap:16px}
     }
+
+    /* Mobile */
     @media (max-width:640px){
       .footer-inner{grid-template-columns:1fr}
       .brandline{justify-content:center}
+      .footer-col{text-align:center}
+      .footer-col a{display:block;margin:.3rem 0}
       .subbar{font-size:11px}
     }
   </style>
@@ -114,7 +138,7 @@
             </div>
             <div style="padding:16px 0;">
               <div class="sib-form-block" style="text-align:left">
-                <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; font-weight:700; font-family:Helvetica, sans-serif; color:#fff; background-color:#6b4226; border-radius:20px; border-width:0;" form="sib-form" type="submit">
+                <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; font-weight:700; font-family:Helvetica, sans-serif; color:var(--latte-fg); background-color:var(--latte); border-radius:20px; border-width:0;" form="sib-form" type="submit">
                   <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
                   Save my spot
                 </button>
@@ -133,10 +157,11 @@
     <div class="footer-inner">
       <div class="footer-col">
         <div class="brandline">
-          <img src="brewdrops-logo.png" alt="BrewDrops logo">
+          <!-- Use the exact filename you have in your repo; spaces can 404 on some hosts -->
+          <img src="brewdrops-logo.png" alt="BrewDrops logo" />
           <strong>BrewDrops</strong>
         </div>
-        <p style="margin:.6rem 0 0 0;opacity:.9;">Live simply, simply live.</p>
+        <p class="tagline">Live simply, simply live.</p>
       </div>
 
       <div class="footer-col">
@@ -150,7 +175,6 @@
           <li><a href="whoops.html">Terms of Use</a></li>
         </ul>
       </div>
-      </div>
 
       <div class="footer-col">
         <h4>Keep in touch</h4>
@@ -161,6 +185,7 @@
         </ul>
       </div>
     </div>
+
     <div class="subbar">© 2025 BrewDrops, Inc. All rights reserved. | Made in the USA 🇺🇸</div>
   </footer>
 </div>
@@ -174,3 +199,6 @@
   window.GENERIC_INVALID_MESSAGE="That doesn’t look like a valid email. Try again with something like name@example.com.";
   window.translation={common:{selectedList:'{quantity} list selected',selectedLists:'{quantity} lists selected',selectedOption:'{quantity} selected',selectedOptions:'{quantity} selected'}};
   var AUTOHIDE = Boolean(1);
+</script>
+</body>
+</html>
