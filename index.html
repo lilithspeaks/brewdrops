@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>BrewDrops</title>
-  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.ico" />
+
   <style>
-    body {
-      margin:0;
-      padding:0;
+    :root{
+      --espresso:#2B1B12;
+      --foam:#FFFDF9;
+      --cream:#F5EDE4;
+      --ink:#1c1412;
+      --latte:#6b4226;
+      --latte-press:#4b2e2a;
+    }
+
+    /* Page */
+    body{
+      margin:0; padding:0;
       font-family: system-ui, Helvetica, Arial, sans-serif;
-      background: linear-gradient(135deg, #F5EDE4, #f3e7dd);
-      color:#2B1B12;
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
+      background: linear-gradient(135deg, var(--cream), #f3e7dd);
+      color: var(--ink);
+      min-height:100vh; display:flex; flex-direction:column;
     }
-    main {
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:2rem;
+    main{
+      flex:1; display:flex; align-items:center; justify-content:center;
+      text-align:center; padding:2rem;
     }
-    h1 { font-size:2rem; margin-bottom:1rem; }
-    p { font-size:1.1rem; margin-bottom:2rem; }
-    a.button {
-      display:inline-block;
-      padding:14px 28px;
-      border-radius:24px;
-      background:#6b4226;
-      color:#fff;
-      text-decoration:none;
-      font-weight:bold;
-      font-size:1rem;
+    h1{ font-size:2rem; margin-bottom:1rem; }
+    p{ font-size:1.1rem; margin-bottom:2rem; }
+    a.button{
+      display:inline-block; padding:14px 28px; border-radius:24px;
+      background:var(--latte); color:#fff; text-decoration:none; font-weight:bold; font-size:1rem;
+      box-shadow:0 4px 12px rgba(107,66,38,.18);
     }
-    a.button:hover { background:#4b2e2a; }
-    footer {
-      background:#2B1B12;
-      color:#fff;
-      text-align:center;
-      padding:1rem;
-      font-size:.85rem;
-    }
+    a.button:hover{ background:var(--latte-press); }
+
+    /* Fallback so logo size is stable before header.css is injected */
+    #site-header .brand img{ height:44px; width:auto; display:block }
+    @media (max-width:640px){ #site-header .brand img{ height:40px } }
   </style>
 </head>
 <body>
+
+  <!-- Injected shared header -->
+  <div id="site-header"></div>
+
   <main>
     <div>
       <h1>BrewDrops</h1>
@@ -54,6 +54,23 @@
       <a class="button" href="waitlist.html">Join the Waitlist</a>
     </div>
   </main>
-  <footer>© 2025 BrewDrops, Inc. All rights reserved.</footer>
+
+  <!-- Injected shared footer -->
+  <div id="site-footer"></div>
+
+  <script>
+    // Simple include loader (works on GitHub Pages)
+    async function loadPart(id, file){
+      try{
+        const res = await fetch(file, { cache: "no-store" }); // avoid stale header/footer after edits
+        if(!res.ok) throw new Error(res.status + " " + res.statusText);
+        document.getElementById(id).innerHTML = await res.text();
+      }catch(e){
+        console.error("Failed to load", file, e);
+      }
+    }
+    loadPart("site-header", "header.html");
+    loadPart("site-footer", "footer.html");
+  </script>
 </body>
 </html>
