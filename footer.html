@@ -1,11 +1,55 @@
+<style>
+  footer{background:#2B1B12;color:#F8F5F2}
+  .footer-inner{
+    max-width:1200px;margin:0 auto;padding:32px 16px;
+    display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px
+  }
+  .footer-col h4{margin:0 0 8px 0;font-size:14px;letter-spacing:.02em;text-transform:uppercase;opacity:.85}
+  .footer-col ul{list-style:none;margin:0;padding:0}
+  .footer-col li{margin:.4rem 0}
+  .footer-col a{color:#F8F5F2;text-decoration:none;opacity:.9}
+  .footer-col a:hover{opacity:1;text-decoration:underline}
+  .brandline{display:flex;align-items:center;gap:12px}
+  .brandline img{height:48px; width:auto}
+  .subbar{border-top:1px solid rgba(248,245,242,.3);text-align:center;padding:12px 10px;font-size:12px;opacity:.9;display:block;margin-top:20px}
+  @media (max-width:900px){ .footer-inner{grid-template-columns:1fr 1fr;gap:16px} }
+  @media (max-width:640px){
+    .footer-inner{grid-template-columns:1fr}
+    .brandline{justify-content:center}
+    .subbar{font-size:11px}
+  }
+</style>
 
 <footer>
   <div class="footer-inner">
-    <div class="brandline">
-      <img src="brewdrops-logo.png" alt="BrewDrops logo">
-      <strong>BrewDrops</strong>
+    <div class="footer-col">
+      <div class="brandline">
+        <img src="brewdrops-logo.png" alt="BrewDrops logo">
+        <strong>BrewDrops</strong>
+      </div>
+      <p style="margin:.6rem 0 0 0;opacity:.9;">Live simply, simply live.</p>
     </div>
-    <p style="margin:.6rem 0 0 0;opacity:.9;">Live simply, simply live.</p>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="whoops.html">About</a></li>
+        <li><a href="whoops.html">FAQ</a></li>
+        <li><a href="whoops.html">Updates</a></li>
+        <li><a href="whoops.html">Contact</a></li>
+        <li><a href="whoops.html">Privacy Policy</a></li>
+        <li><a href="whoops.html">Terms of Use</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Keep in touch</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/brewdrops.co" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@brewdrops.co" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://www.linkedin.com/company/brewdrops" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
   </div>
   <div class="subbar">© 2025 BrewDrops, Inc. All rights reserved. | Made in the USA 🇺🇸</div>
 </footer>
