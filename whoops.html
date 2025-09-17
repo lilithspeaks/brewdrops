@@ -1,36 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Whoops — BrewDrops</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BrewDrops — Whoops!</title>
+  <link rel="icon" type="image/png" href="favicon.ico" />
   <style>
-    :root { --espresso:#2B1B12; --cream:#F5EDE4; }
+    :root {
+      --espresso:#2B1B12;
+      --cream:#F5EDE4;
+      --latte:#6b4226;
+      --latte-press:#4b2e2a;
+    }
     body {
-      margin:0; font-family: system-ui, Helvetica, Arial, sans-serif;
-      background: linear-gradient(135deg, var(--cream), #f3e7dd);
-      color: var(--espresso); min-height: 100vh; display:grid; place-items:center;
+      margin:0;
+      padding:0;
+      font-family:system-ui, Helvetica, Arial, sans-serif;
+      background:linear-gradient(135deg,var(--cream),#f3e7dd);
+      color:var(--espresso);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
     }
-    .card {
-      background:#fffdf9; border-radius:20px; padding:40px; max-width:560px;
-      box-shadow:0 6px 18px rgba(0,0,0,.12); text-align:center;
+    main {
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:2rem;
     }
-    h1 { margin:0 0 10px; font-size:28px; }
-    p { margin:0 0 20px; line-height:1.5; }
+    h1 {
+      font-size:2.2rem;
+      margin-bottom:1rem;
+    }
+    p {
+      font-size:1.1rem;
+      margin-bottom:2rem;
+      opacity:.85;
+    }
     a.button {
-      display:inline-block; padding:12px 20px; border-radius:20px;
-      background:#6b4226; color:#fff; text-decoration:none; font-weight:700;
+      display:inline-block;
+      padding:12px 24px;
+      border-radius:24px;
+      background:var(--latte);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:1rem;
+      transition:background .2s ease;
     }
-    a.button:hover { background:#4b2e2a; }
+    a.button:hover {
+      background:var(--latte-press);
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Whoops — not brewed yet</h1>
-    <p>This page is still steeping. We’ll pour it soon.</p>
-    <a class="button" href="index.html">← Back to BrewDrops</a>
+
+<!-- Shared header -->
+<div id="site-header"></div>
+
+<main>
+  <div>
+    <h1>Whoops!</h1>
+    <p>This page isn’t ready yet.<br>We’ll be brewing it soon ☕✨</p>
+    <a class="button" href="index.html">Back to Home</a>
   </div>
+</main>
+
+<!-- Shared footer -->
+<div id="site-footer"></div>
+
+<!-- Inject header + footer -->
+<script>
+  async function loadPart(id, file){
+    try{
+      const res = await fetch(file, { cache: "no-store" });
+      if(!res.ok) throw new Error(res.status + " " + res.statusText);
+      const html = await res.text();
+      document.getElementById(id).innerHTML = html;
+    }catch(err){
+      console.error("Failed to load", file, err);
+    }
+  }
+  loadPart("site-header", "header.html");
+  loadPart("site-footer", "footer.html");
+</script>
+
 </body>
 </html>
