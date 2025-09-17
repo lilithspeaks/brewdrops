@@ -1,3 +1,41 @@
+<style>
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:#FFF8F0; /* warm cream */
+    border-bottom:1px solid rgba(43,27,18,.08);
+    padding:.6rem .9rem;
+    -webkit-backdrop-filter:saturate(1.05) blur(4px);
+    backdrop-filter:saturate(1.05) blur(4px);
+  }
+  .header-inner{
+    max-width:1200px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:#1c1412}
+  .brand img{height:44px; width:auto; display:block}
+  .brand span{ font-weight:800; letter-spacing:.2px; font-size:1.08rem }
+
+  .socials{ display:flex; align-items:center; gap:10px }
+  .social-btn{
+    width:36px; height:36px; border-radius:999px;
+    display:inline-flex; align-items:center; justify-content:center;
+    background: rgba(43,27,18,.06);
+    border:1px solid rgba(43,27,18,.08);
+    text-decoration:none;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .social-btn:hover{
+    transform: translateY(-1px);
+    background: rgba(43,27,18,.10);
+    box-shadow: 0 6px 16px rgba(43,27,18,.12);
+  }
+  .social-btn svg{ width:18px; height:18px; fill:#2B1B12 }
+
+  @media (max-width:640px){
+    .brand span{ display:none; }
+    .brand img{ height:40px; }
+  }
+</style>
 
 <header class="site-header">
   <div class="header-inner">
@@ -5,10 +43,17 @@
       <img src="brewdrops-logo.png" alt="BrewDrops logo">
       <span>BrewDrops</span>
     </a>
+
     <nav class="socials" aria-label="Social links">
-      <a href="https://www.instagram.com/brewdrops.co" target="_blank" class="social-btn">IG</a>
-      <a href="https://www.tiktok.com/@brewdrops.co" target="_blank" class="social-btn">TT</a>
-      <a href="https://www.linkedin.com/company/brewdrops" target="_blank" class="social-btn">LI</a>
+      <a href="https://www.instagram.com/brewdrops.co" target="_blank" rel="noopener" aria-label="Instagram" class="social-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.75-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@brewdrops.co" target="_blank" rel="noopener" aria-label="TikTok" class="social-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3c.7 2.2 2.4 3.9 4.6 4.6V11c-1.9-.1-3.6-.7-5-1.8v5.7A5.5 5.5 0 1 1 9.5 9.5h2.6a2.9 2.9 0 1 0 0 5.8V3z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/brewdrops" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 2.5 6a2.5 2.5 0 0 1 2.48-2.5zM3 8h4v13H3zM9 8h3.8v1.8h.1A4.2 4.2 0 0 1 17 8.3c3 0 5 2 5 6.1V21h-4v-5.8c0-1.9-.7-3.2-2.4-3.2-1.3 0-2 .9-2.3 1.7a2.7 2.7 0 0 0-.1 1V21H9z"/></svg>
+      </a>
     </nav>
   </div>
 </header>
