@@ -30,6 +30,10 @@
     .wrap{min-height:100dvh;display:flex;flex-direction:column}
     main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 16px}
     .sib-form-container{display:flex;justify-content:center}
+
+    /* Fallback so header logo size is stable before header.html CSS is injected */
+    #site-header .brand img{height:44px;width:auto;display:block}
+    @media (max-width:640px){ #site-header .brand img{height:40px} }
   </style>
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
