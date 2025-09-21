@@ -57,17 +57,6 @@
           a.setAttribute('href','whoops.html');
         }
       });
-
-      // OPTIONAL: ensure social links are correct (adjust if your handles differ)
-      const socials = {
-        instagram: "https://instagram.com/brewdropsco",
-        tiktok:    "https://www.tiktok.com/@brewdropsco",
-        linkedin:  "https://www.linkedin.com/company/brewdrops"
-      };
-      document.querySelectorAll('#site-header a[href*="instagram.com"], #site-header a[aria-label*="Instagram"]').forEach(a=>a.href=socials.instagram);
-      document.querySelectorAll('#site-header a[href*="tiktok.com"], #site-header a[aria-label*="TikTok"]').forEach(a=>a.href=socials.tiktok);
-      document.querySelectorAll('#site-header a[href*="linkedin.com"], #site-header a[aria-label*="LinkedIn"]').forEach(a=>a.href=socials.linkedin);
-    }
   </script>
 </body>
 </html>
