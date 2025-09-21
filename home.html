@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrewDrops — Home</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://brewdrops.co/home.html" />
+  <style>
+    :root { --ink:#2b1a12; --bean:#5b371f; --cream:#f6efe8; }
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;background:linear-gradient(180deg,#f6efe8,#efe0d2);color:var(--ink)}
+    header,footer{display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
+    a{color:inherit;text-decoration:none}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .pill{display:inline-block;background:var(--bean);color:#fff;padding:12px 18px;border-radius:999px;font-weight:600}
+    .hero{min-height:68vh;display:grid;place-items:center;text-align:center;padding:24px}
+    h1{font-size:clamp(28px,4vw,48px);margin:0 0 10px}
+    p{opacity:.9;max-width:720px;margin:0 auto 18px;font-size:clamp(16px,2.2vw,20px)}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));max-width:1000px;margin:28px auto;padding:0 16px}
+    .card{background:#fff8f2;border-radius:16px;aspect-ratio:1/1;box-shadow:0 10px 26px rgba(0,0,0,.06)}
+    footer{background:#2a1a14;color:#f3e9df}
+    footer a{opacity:.9}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="/home.html">
+      <img src="/favicon.ico" alt="BrewDrops" width="28" height="28"> BrewDrops
+    </a>
+    <nav>
+      <a href="/waitlist.html" class="pill">Join the Waitlist</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>The first dissolvable, zero-waste coffee pods.</h1>
+        <p>Cozy Pinterest energy, startup-clean. This is where your collage / product tease / founder note will live.</p>
+        <p><a class="pill" href="/waitlist.html">Be a Day One</a></p>
+      </div>
+    </section>
+
+    <!-- placeholder Pinterest-y grid you can swap for images later -->
+    <section class="grid">
+      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© BrewDrops</div>
+    <div>
+      <a href="/about.html">About</a> ·
+      <a href="/faq.html">FAQ</a> ·
+      <a href="/contact.html">Contact</a>
+    </div>
+  </footer>
+</body>
+</html>
