@@ -3,26 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coming Soon...</title>
+  <title>BrewDrops — Coming Soon</title>
   <link rel="icon" href="/favicon.ico">
   <style>
-    body {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: #f6efe8;
-      color: #2b1a12;
-    }
-    h1 {
-      font-size: clamp(32px, 8vw, 72px);
-      margin: 0;
-    }
+    :root{--bg:#f6efe8;--ink:#2b1a12;--accent:#6a432c;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
+    header,footer{padding:16px 20px;}
+    header{border-bottom:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.4);backdrop-filter:saturate(150%) blur(6px);}
+    .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none;}
+    .brand img{width:28px;height:28px;border-radius:50%;}
+    .rightside{display:flex;align-items:center;gap:14px;}
+    .icons a img{width:20px;height:20px;opacity:.85;transition:opacity .2s;}
+    .icons a img:hover{opacity:1;}
+    .btn{padding:8px 14px;border-radius:999px;font-weight:600;text-decoration:none;}
+    .btn-primary{background:var(--accent);color:#fff;}
+    main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;}
+    main h1{font-size:clamp(32px,8vw,72px);}
+    footer{border-top:1px solid rgba(0,0,0,.08);font-size:14px;opacity:.85;}
+    .footer-wrap{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+    .footer-links a{margin-left:14px;color:var(--ink);text-decoration:none;opacity:.9;}
+    .footer-links a:hover{text-decoration:underline;}
   </style>
 </head>
 <body>
-  <h1>Coming Soon</h1>
+  <header>
+    <div class="nav">
+      <a class="brand" href="/home.html">
+        <img src="/favicon.ico" alt="BrewDrops"> BrewDrops
+      </a>
+      <div class="rightside">
+        <div class="icons">
+          <a href="https://instagram.com/brewdrops.co" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+          <a href="https://tiktok.com/@brewdrops.co" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
+          <a href="https://www.linkedin.com/company/brewdrops" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"></a>
+        </div>
+        <a class="btn btn-primary" href="/waitlist.html">Join the Waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Coming Soon...</h1>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>© BrewDrops</div>
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
