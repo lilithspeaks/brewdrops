@@ -7,56 +7,31 @@
   <link rel="icon" href="favicon.ico" />
   <style>
     :root{ --bg:#f6efe8; --ink:#2b1a12; }
-    html,body{height:100%}
     body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:var(--bg); color:var(--ink);
       display:flex; flex-direction:column; min-height:100vh;
     }
-    /* page chrome slots */
-    #site-header, #site-footer { width:100% }
-
-    /* center the only content */
-    main{ flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px }
-    h1{ margin:0; font-size:clamp(28px,5vw,44px); letter-spacing:-.01em }
+    main{ flex:1; display:flex; align-items:center; justify-content:center; text-align:center; }
+    h1{ margin:0; font-size:clamp(24px,4vw,36px); }
   </style>
 </head>
 <body>
-
-  <!-- your shared header gets injected here -->
   <div id="site-header"></div>
 
   <main>
-    <h1>Coming Soon…</h1>
+    <h1>Coming Soon...</h1>
   </main>
 
-  <!-- your shared footer gets injected here -->
   <div id="site-footer"></div>
 
   <script>
-    // Same include loader pattern you already use on other pages
-    // (mirrors index.html + waitlist.html). :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
-    async function loadPart(id, file){
-      try{
-        const res = await fetch(file, { cache: "no-store" });
-        if(!res.ok) throw new Error(res.status + " " + res.statusText);
-        document.getElementById(id).innerHTML = await res.text();
-        if(id === "site-header") afterHeaderLoaded();
-      }catch(e){ console.error("Failed to load", file, e); }
+    async function include(id, file){
+      const res = await fetch(file,{cache:"no-store"});
+      document.getElementById(id).innerHTML = await res.text();
     }
-    loadPart("site-header","header.html");
-    loadPart("site-footer","footer.html");
-
-    // OPTIONAL: while sections are not ready, point certain nav links to /whoops.html
-    function afterHeaderLoaded(){
-      const fallback = ["about","faq","contact","privacy","terms"];
-      document.querySelectorAll('#site-header a').forEach(a=>{
-        const txt = (a.textContent || "").trim().toLowerCase();
-        if(fallback.includes(txt) && (!a.getAttribute('href') || a.getAttribute('href') === "#")){
-          a.setAttribute('href','whoops.html');
-        }
-      });
+    include("site-header","header.html");
+    include("site-footer","footer.html");
   </script>
 </body>
 </html>
