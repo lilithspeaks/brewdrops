@@ -6,41 +6,41 @@
   <title>Welcome • BrewDrops</title>
   <link rel="icon" href="/favicon.ico">
   <style>
-    body{margin:0;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;background:linear-gradient(180deg,#f6efe8,#efe0d2);color:#2b1a12}
-    .wrap{min-height:100dvh;display:grid;place-items:center;padding:28px}
-    .card{max-width:720px;width:100%;background:#fff8f2;border-radius:24px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center}
-    .logo{display:flex;gap:10px;align-items:center;justify-content:center;margin-bottom:8px;font-weight:700}
-    h1{margin:10px 0 12px}
-    p{margin:0 0 18px}
-    .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{border:0;padding:12px 18px;border-radius:999px;font-weight:600;cursor:pointer}
-    .primary{background:#5b371f;color:#fff}
-    .ghost{background:transparent;border:1px solid #cbb4a3;color:#5b371f}
-    .link{display:inline-block;margin-top:14px}
+    :root{--bg:#f6efe8;--ink:#2b1a12;--accent:#6a432c;--card:#fffaf5}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--ink)}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline} a:visited{color:var(--accent)}
+    .shell{min-height:100dvh;display:grid;place-items:center;padding:24px}
+    .card{max-width:720px;width:100%;background:var(--card);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:24px 22px;text-align:center;box-shadow:0 10px 28px rgba(0,0,0,.06)}
+    .brand{display:flex;gap:10px;align-items:center;justify-content:center;font-weight:700;margin-bottom:6px}
+    .brand img{width:24px;height:24px;border-radius:50%}
+    h1{margin:8px 0 10px;font-size:clamp(24px,4.6vw,36px)}
+    p{margin:0 0 16px;opacity:.9}
+    .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:999px;font-weight:600;border:1px solid transparent}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-ghost{background:transparent;border-color:rgba(0,0,0,.1);color:var(--ink)}
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="shell">
     <div class="card">
-      <a class="logo" href="/home.html"><img src="/favicon.ico" width="28" height="28" alt=""> BrewDrops</a>
+      <a class="brand" href="/home.html"><img src="/favicon.ico" alt="">BrewDrops</a>
       <h1>The first dissolvable, zero-waste coffee pods.</h1>
-      <p>Join the waitlist for early drops and founder updates.</p>
-
+      <p>Join the waitlist for early access and founder updates.</p>
       <div class="row">
-        <a class="btn primary" id="join" href="/waitlist.html">Join the Waitlist</a>
-        <button class="btn ghost" id="skip">Skip for now</button>
+        <a class="btn btn-primary" id="join" href="/waitlist.html">Join the Waitlist</a>
+        <button class="btn btn-ghost" id="skip">Skip for now</button>
       </div>
-
-      <a class="link" id="home" href="/home.html">Or take me to the homepage →</a>
+      <p style="margin-top:14px"><a id="home" href="/home.html">Or go to the homepage →</a></p>
     </div>
   </div>
 
   <script>
-    const KEY = "bd_seen_welcome";
-    const markSeen = () => localStorage.setItem(KEY, "true");
-    document.getElementById("skip").addEventListener("click", () => { markSeen(); location.href="/home.html"; });
-    document.getElementById("join").addEventListener("click", markSeen);
-    document.getElementById("home").addEventListener("click", markSeen);
+    const KEY="bd_seen_welcome";
+    const seen=()=>localStorage.setItem(KEY,"true");
+    document.getElementById("join").addEventListener("click",seen);
+    document.getElementById("skip").addEventListener("click",()=>{seen();location.href="/home.html";});
+    document.getElementById("home").addEventListener("click",seen);
   </script>
 </body>
 </html>
