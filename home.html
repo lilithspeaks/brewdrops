@@ -3,57 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrewDrops — Home</title>
+  <title>BrewDrops — The first dissolvable, zero-waste coffee pods.</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="canonical" href="https://brewdrops.co/home.html" />
   <style>
-    :root { --ink:#2b1a12; --bean:#5b371f; --cream:#f6efe8; }
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;background:linear-gradient(180deg,#f6efe8,#efe0d2);color:var(--ink)}
-    header,footer{display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
-    a{color:inherit;text-decoration:none}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
-    .pill{display:inline-block;background:var(--bean);color:#fff;padding:12px 18px;border-radius:999px;font-weight:600}
-    .hero{min-height:68vh;display:grid;place-items:center;text-align:center;padding:24px}
-    h1{font-size:clamp(28px,4vw,48px);margin:0 0 10px}
-    p{opacity:.9;max-width:720px;margin:0 auto 18px;font-size:clamp(16px,2.2vw,20px)}
-    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));max-width:1000px;margin:28px auto;padding:0 16px}
-    .card{background:#fff8f2;border-radius:16px;aspect-ratio:1/1;box-shadow:0 10px 26px rgba(0,0,0,.06)}
-    footer{background:#2a1a14;color:#f3e9df}
-    footer a{opacity:.9}
+    :root{--bg:#f6efe8;--ink:#2b1a12;--accent:#6a432c;--card:#fffaf5}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--ink)}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline} a:visited{color:var(--accent)}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+    header{height:64px;border-bottom:1px solid rgba(0,0,0,.06);background:rgba(255,255,255,.35);backdrop-filter:saturate(150%) blur(6px)}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand img{width:28px;height:28px;border-radius:50%}
+    .nav a{color:var(--ink);opacity:.9}
+    .btn{display:inline-block;padding:10px 16px;border-radius:999px;font-weight:600;border:1px solid transparent}
+    .btn-primary{background:var(--accent);color:#fff}
+    main{padding:56px 0}
+    .hero{text-align:center;padding:24px}
+    .hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,48px);line-height:1.08;letter-spacing:-.01em}
+    .hero p{margin:0 auto 18px;max-width:760px;font-size:clamp(16px,2.2vw,19px);opacity:.9}
+    .section{margin:40px auto 0;max-width:900px;background:var(--card);border-radius:16px;padding:18px;border:1px solid rgba(0,0,0,.04)}
+    footer{border-top:1px solid rgba(0,0,0,.06);padding:18px 0;margin-top:40px;font-size:14px;opacity:.9}
   </style>
 </head>
 <body>
   <header>
-    <a class="logo" href="/home.html">
-      <img src="/favicon.ico" alt="BrewDrops" width="28" height="28"> BrewDrops
-    </a>
-    <nav>
-      <a href="/waitlist.html" class="pill">Join the Waitlist</a>
-    </nav>
+    <div class="wrap nav">
+      <a class="brand" href="/home.html">
+        <img src="/favicon.ico" alt="BrewDrops"> <span>BrewDrops</span>
+      </a>
+      <nav>
+        <a href="/about.html">About</a> &nbsp;·&nbsp;
+        <a href="/faq.html">FAQ</a> &nbsp;·&nbsp;
+        <a href="/contact.html">Contact</a> &nbsp;&nbsp;
+        <a class="btn btn-primary" href="/waitlist.html">Join the Waitlist</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="wrap">
     <section class="hero">
-      <div>
-        <h1>The first dissolvable, zero-waste coffee pods.</h1>
-        <p>Cozy Pinterest energy, startup-clean. This is where your collage / product tease / founder note will live.</p>
-        <p><a class="pill" href="/waitlist.html">Be a Day One</a></p>
-      </div>
+      <h1>The first dissolvable, zero-waste coffee pods.</h1>
+      <p>A cleaner cup, less clutter, and packaging that doesn’t end up in the bin. Sign up for early access and updates.</p>
+      <p><a class="btn btn-primary" href="/waitlist.html">Join the Waitlist</a></p>
     </section>
 
-    <!-- placeholder Pinterest-y grid you can swap for images later -->
-    <section class="grid">
-      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
-      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+    <!-- Keep this simple info block for now; replace later with your collage/sections -->
+    <section class="section">
+      <strong>What’s coming:</strong> product flavors, how it works, sustainability, and founder notes.  
+      For now, follow along and join the list for day-one updates.
     </section>
   </main>
 
   <footer>
-    <div>© BrewDrops</div>
-    <div>
-      <a href="/about.html">About</a> ·
-      <a href="/faq.html">FAQ</a> ·
-      <a href="/contact.html">Contact</a>
+    <div class="wrap">
+      © BrewDrops &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms</a>
     </div>
   </footer>
 </body>
