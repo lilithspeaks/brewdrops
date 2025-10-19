@@ -5,21 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BrewDrops</title>
   <link rel="icon" href="/favicon.ico">
-  <script>
-    (function () {
-      // If you want to force everyone to always see the welcome page, set this to true
-      const FORCE_WELCOME = true;
-
-      // This is like a little memory in the browser
-      const KEY = "bd_seen_welcome";
-      const seen = localStorage.getItem(KEY) === "true";
-
-      // If first time (not seen) OR campaign mode is on → send to welcome
-      const dest = (FORCE_WELCOME || !seen) ? "/welcome.html" : "/home.html";
-
-      // Actually redirect
-      location.replace(dest);
-    })();
+  
   </script>
   <noscript><meta http-equiv="refresh" content="0; url=/home.html"></noscript>
 </head>
