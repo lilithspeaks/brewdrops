@@ -3,19 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BrewDrops — One Drop. Endless Possibilities.</title>
+  <title>BrewDrops — Fully dissolvable coffee pods</title>
   <link rel="icon" href="favicon.ico" />
+
+  <!-- Optional: swap to a cleaner font (Inter). Remove these 2 lines if you prefer system font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
   <style>
     :root{
       --bg:#fffdf9;         /* warm white */
       --bg2:#f6efe8;        /* latte cream */
       --ink:#2b1a12;        /* espresso text */
       --accent:#6a432c;     /* button */
+      --muted:rgba(43,27,18,.7);
     }
 
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background:linear-gradient(180deg,var(--bg),var(--bg2));
       color:var(--ink);
       display:flex;
@@ -23,32 +29,58 @@
       min-height:100vh;
     }
 
+    /* HERO */
     main{
       flex:1;
       display:flex;
-      flex-direction:column;
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:60px 20px;
+      padding:72px 20px;       /* more breathing room */
     }
-
+    .wrap{max-width:860px; width:100%;}
+    .kicker{
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:.8rem;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
     h1{
-      margin:0 0 12px;
-      font-size:clamp(32px,6vw,64px);
+      margin:0 0 10px;
+      font-weight:600;                 /* lighter than 700 so it feels premium */
+      font-size:clamp(28px,5vw,48px);  /* smaller cap vs. before */
       letter-spacing:-0.01em;
-      line-height:1.1;
+      line-height:1.15;
     }
-
     p.sub{
-      margin:0 0 24px;
-      font-size:clamp(16px,2.2vw,20px);
-      opacity:0.9;
+      margin:0 auto 18px;
+      max-width:700px;
+      font-size:clamp(15px,2vw,18px);
+      color:var(--muted);
+      line-height:1.6;
     }
 
+    /* quick proof chips */
+    .pills{
+      display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+      margin:14px 0 26px; padding:0; list-style:none;
+    }
+    .pills li{
+      background:rgba(43,27,18,.06);
+      color:var(--ink);
+      border:1px solid rgba(43,27,18,.08);
+      border-radius:999px;
+      padding:.45em .85em;
+      font-size:.9rem;
+      white-space:nowrap;
+    }
+
+    /* CTA */
     .btn{
       display:inline-block;
-      padding:.8em 1.3em;
+      padding:.75em 1.2em;
       border-radius:999px;
       background:var(--accent);
       color:#fff;
@@ -59,18 +91,27 @@
     .btn:hover{ transform:translateY(-1px); filter:brightness(.95); }
   </style>
 </head>
-
 <body>
-  <!-- Shared header -->
+  <!-- shared header -->
   <div id="site-header"></div>
 
   <main>
-    <h1>One drop. Endless possibilities.</h1>
-    <p class="sub">Hot or cold, coffee or cocktail — BrewDrops adapt to you.</p>
-    <a class="btn" href="/waitlist">Join the Waitlist</a>
+    <div class="wrap">
+      <div class="kicker">What is BrewDrops?</div>
+      <h1>Fully dissolvable, zero-waste coffee pods.</h1>
+      <p class="sub">No machine required. Drop into water or milk and stir — café-grade coffee in seconds, without plastic or cleanup.</p>
+
+      <ul class="pills">
+        <li>No machine</li>
+        <li>Zero waste</li>
+        <li>Hot or cold</li>
+      </ul>
+
+      <a class="btn" href="/waitlist">Join the Waitlist</a>
+    </div>
   </main>
 
-  <!-- Shared footer -->
+  <!-- shared footer -->
   <div id="site-footer"></div>
 
   <script>
@@ -78,9 +119,7 @@
       try{
         const res = await fetch(file,{cache:"no-store"});
         document.getElementById(id).innerHTML = await res.text();
-      }catch(e){
-        console.error("Include failed:", file, e);
-      }
+      }catch(e){ console.error("Include failed:", file, e); }
     }
     include("site-header","header.html");
     include("site-footer","footer.html");
