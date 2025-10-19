@@ -6,7 +6,7 @@
   <title>BrewDrops — Reimagining coffee</title>
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Font: Fraunces (for BrewDrops title) + Inter for body -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
@@ -28,10 +28,12 @@
       min-height: 100vh;
     }
 
-    /* Header/Footer inject */
-    #site-header, #site-footer { width: 100%; }
+    /* Shared header/footer containers */
+    #site-header, #site-footer {
+      width: 100%;
+    }
 
-    /* HERO section */
+    /* Main hero section */
     main {
       flex: 1;
       display: flex;
@@ -48,6 +50,7 @@
       text-align: center;
     }
 
+    /* Background pod image */
     .hero-bg {
       position: absolute;
       top: 50%;
@@ -59,6 +62,7 @@
       pointer-events: none;
     }
 
+    /* Content sits above image */
     .hero-content {
       position: relative;
       z-index: 2;
@@ -86,11 +90,9 @@
 
     .desc {
       font-size: 1.1rem;
-      margin-bottom: 20px;
       color: var(--ink);
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 20px;
       line-height: 1.6;
     }
 
@@ -101,15 +103,20 @@
     }
   </style>
 </head>
+
 <body>
 
-  <!-- shared header -->
+  <!-- Shared header -->
   <div id="site-header"></div>
 
-  <!-- HERO -->
+  <!-- Hero section -->
   <main>
     <div class="hero-wrapper">
-      <img src="images/brewdrop-dissolvable-coffee.png" alt="BrewDrop pod" class="hero-bg" />
+      <img
+        src="images/brewdrop-dissolvable-coffee.png"
+        alt="BrewDrop pod"
+        class="hero-bg"
+      />
       <div class="hero-content">
         <h1>BrewDrops</h1>
         <h2>Reimagining coffee.</h2>
@@ -120,9 +127,10 @@
     </div>
   </main>
 
-  <!-- shared footer -->
+  <!-- Shared footer -->
   <div id="site-footer"></div>
 
+  <!-- Inject header/footer content -->
   <script>
     async function include(id, file) {
       try {
