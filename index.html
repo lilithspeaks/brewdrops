@@ -3,92 +3,122 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BrewDrops — One pod, zero waste, endless possibilities.</title>
+  <title>BrewDrops — Fully dissolvable coffee pods</title>
   <link rel="icon" href="favicon.ico" />
+  <link rel="canonical" href="https://brewdrops.co/" />
 
-  <!-- Optional: swap to a cleaner font (Inter). Remove these 2 lines if you prefer system font. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <!-- Brand font for the wordmark -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== Palette (cooler, deeper coffee tones) ===== */
     :root{
-      --bg:#fffdf9;         /* warm white */
-      --bg2:#f6efe8;        /* latte cream */
-      --ink:#2b1a12;        /* espresso text */
-      --accent:#6a432c;     /* button */
-      --muted:rgba(43,27,18,.7);
+      --espresso:#2A1A12;  /* primary ink */
+      --mocha:#4E3426;     /* accents if needed */
+      --cocoa:#5C4A3E;     /* secondary */
+      --cream:#F4EFE8;     /* bg */
+      --foam:#F9F7F3;      /* light bg */
+      --muted:rgba(42,26,18,.72);
     }
 
+    /* ===== Base ===== */
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background:linear-gradient(180deg,var(--bg),var(--bg2));
-      color:var(--ink);
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--foam),var(--cream));
+      color:var(--espresso);
+      display:flex; flex-direction:column; min-height:100vh;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* HERO */
+    /* ===== Layout ===== */
     main{
       flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:72px 20px;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; padding:84px 20px;
     }
-    .wrap{max-width:860px; width:100%;}
-    h1{
-      margin:0 0 10px;
+    .wrap{ max-width:900px; width:100%; }
+
+    /* ===== Wordmark (brand title) ===== */
+    .brand-title{
+      font-family:"Fraunces", serif;
       font-weight:600;
-      font-size:clamp(28px,5vw,48px);
-      letter-spacing:-0.01em;
-      line-height:1.15;
+      font-size:clamp(36px,6vw,72px);
+      letter-spacing:-0.02em;
+      line-height:1;
+      color:var(--espresso);
+      margin:0 0 14px;
     }
-    p.sub{
-      margin:0 auto 26px;
-      max-width:700px;
-      font-size:clamp(15px,2vw,18px);
+
+    /* ===== Product statement & intro ===== */
+    .hero-headline{
+      margin:0 0 6px;
+      font-weight:600;           /* feels premium, not shouty */
+      font-size:clamp(26px,4.8vw,40px);
+      letter-spacing:-0.01em;
+      line-height:1.2;
+    }
+    .sub{
+      margin:0 auto 18px;
+      max-width:760px;
+      font-size:clamp(15px,2.2vw,18px);
       color:var(--muted);
       line-height:1.6;
     }
-
-    /* CTA */
-    .btn{
-      display:inline-block;
-      padding:.75em 1.2em;
-      border-radius:999px;
-      background:var(--accent);
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      transition:transform .15s ease, filter .15s ease;
+    .intro{
+      margin:8px auto 24px;
+      max-width:780px;
+      font-size:clamp(15px,2.1vw,18px);
+      color:var(--muted);
+      line-height:1.7;
     }
-    .btn:hover{ transform:translateY(-1px); filter:brightness(.95); }
+
+    /* small meta line */
+    .meta{
+      margin-top:10px;
+      font-size:.9rem;
+      color:rgba(42,26,18,.6);
+    }
+
+    /* keep links subtle if any appear */
+    a{ color:inherit }
   </style>
 </head>
 <body>
-  <!-- shared header -->
+  <!-- Shared header gets injected -->
   <div id="site-header"></div>
 
+  <!-- HERO: brand + product intro (no CTA) -->
   <main>
-    <div class="wrap">
-      <h1>One pod, zero waste, endless possibilities.</h1>
-      <p class="sub">Hot or cold, coffee or cocktail — BrewDrops adapt to you.</p>
-      <a class="btn" href="/waitlist">Join the Waitlist</a>
+    <div class="wrap" role="main">
+      <div class="brand-title">BrewDrops</div>
+
+      <h1 class="hero-headline">Fully dissolvable coffee pods.</h1>
+      <p class="sub">Café-quality coffee. Zero waste. No machine.</p>
+
+      <p class="intro">
+        BrewDrops reimagines the daily ritual: premium coffee wrapped in a plant-based film that dissolves completely.
+        Just drop, stir, and sip—at home or on the go. No plastic to toss, no gear to clean, only the taste you love with none of the waste.
+      </p>
+
+      <div class="meta">Built in Los Angeles • 2025</div>
     </div>
   </main>
 
-  <!-- shared footer -->
+  <!-- Shared footer gets injected -->
   <div id="site-footer"></div>
 
   <script>
+    // Load shared header & footer (same pattern you use elsewhere)
     async function include(id, file){
       try{
         const res = await fetch(file,{cache:"no-store"});
+        if(!res.ok) throw new Error(res.status + " " + res.statusText);
         document.getElementById(id).innerHTML = await res.text();
-      }catch(e){ console.error("Include failed:", file, e); }
+      }catch(err){
+        console.error("Include failed:", file, err);
+      }
     }
     include("site-header","header.html");
     include("site-footer","footer.html");
