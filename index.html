@@ -6,7 +6,7 @@
   <title>BrewDrops — Reimagining coffee</title>
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Fraunces (for BrewDrops title), Inter for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
@@ -38,7 +38,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 120px 20px 160px;
+      padding: 140px 20px 160px;
       position: relative;
     }
 
@@ -48,22 +48,24 @@
       max-width: 1000px;
       text-align: center;
       padding: 40px 20px;
+      z-index: 2;
     }
 
     .hero-bg {
       position: absolute;
-      top: 80px;
+      top: 100px;
       right: 0;
-      width: 620px;
-      height: auto;
-      opacity: 0.26;
+      width: 680px;
+      opacity: 0.28;
       z-index: 1;
       pointer-events: none;
+      max-height: calc(100vh - 240px); /* Prevent image from touching footer */
+      object-fit: contain;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       max-width: 700px;
       margin: 0 auto;
     }
@@ -103,12 +105,11 @@
 
     @media (max-width: 768px) {
       .hero-bg {
-        width: 360px;
-        top: 20px;
+        width: 300px;
+        top: 140px;
         right: -30px;
-        opacity: 0.24;
+        opacity: 0.25;
       }
-
       .hero-content {
         padding: 0 10px;
       }
