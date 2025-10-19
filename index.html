@@ -6,7 +6,7 @@
   <title>BrewDrops — Reimagining coffee</title>
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Fonts -->
+  <!-- Font: Fraunces (for BrewDrops title) + Inter for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
@@ -28,105 +28,113 @@
       min-height: 100vh;
     }
 
-    /* Shared header/footer containers */
     #site-header, #site-footer {
       width: 100%;
     }
 
-    /* Main hero section */
     main {
       flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 80px 20px;
+      align-items: flex-start;
+      padding: 120px 20px 160px; /* ↑ top/bottom breathing space */
       position: relative;
     }
 
     .hero-wrapper {
       position: relative;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
       text-align: center;
+      padding: 40px 20px;
     }
 
-    /* Background pod image */
     .hero-bg {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 260px;
-      transform: translate(-50%, -50%);
-      opacity: 0.12;
+      bottom: -40px;
+      right: -60px;
+      width: 720px;
+      opacity: 0.35;
       z-index: 1;
       pointer-events: none;
     }
 
-    /* Content sits above image */
     .hero-content {
       position: relative;
       z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     h1 {
       font-family: 'Fraunces', serif;
       font-size: clamp(36px, 6vw, 52px);
       font-weight: 600;
-      margin: 0 0 12px;
+      margin: 0 0 16px;
       letter-spacing: -0.02em;
     }
 
     h2 {
       font-size: clamp(20px, 3.5vw, 28px);
       font-weight: 500;
-      margin: 0 0 8px;
+      margin: 0 0 12px;
     }
 
     .sub {
-      font-size: 1rem;
-      margin: 0 0 18px;
+      font-size: 1.1rem;
+      margin: 0 0 24px;
       color: var(--muted);
     }
 
     .desc {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
       color: var(--ink);
-      max-width: 700px;
-      margin: 0 auto 20px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .tags {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--muted);
       letter-spacing: 0.01em;
     }
+
+    @media (max-width: 768px) {
+      .hero-bg {
+        width: 500px;
+        bottom: -20px;
+        right: -40px;
+        opacity: 0.28;
+      }
+
+      .hero-content {
+        padding: 0 10px;
+      }
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- Shared header -->
+  <!-- shared header -->
   <div id="site-header"></div>
 
-  <!-- Hero section -->
+  <!-- HERO -->
   <main>
     <div class="hero-wrapper">
-      <img src="images/brewdrop-dissolvable-coffee.png?v=2" alt="BrewDrop pod" class="hero-bg" />
+      <img src="images/brewdrop-dissolvable-coffee.png?v=4" alt="BrewDrop pod" class="hero-bg" />
       <div class="hero-content">
         <h1>BrewDrops</h1>
         <h2>Reimagining coffee.</h2>
         <p class="sub">One drop at a time.</p>
-        <p class="desc">Premium coffee powder encased in an all‑natural, dissolvable film. Simply drop, stir, and sip.</p>
+        <p class="desc">Premium coffee powder encased in an all‑natural, dissolvable film. Simply drop, stir, and sip. No machines. No mess. Just flavor.</p>
         <p class="tags">Zero Waste • No Machine • PVA Free</p>
       </div>
     </div>
   </main>
 
-  <!-- Shared footer -->
+  <!-- shared footer -->
   <div id="site-footer"></div>
 
-  <!-- Inject header/footer content -->
   <script>
     async function include(id, file) {
       try {
@@ -140,5 +148,6 @@
     include("site-header", "header.html");
     include("site-footer", "footer.html");
   </script>
+
 </body>
 </html>
