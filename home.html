@@ -8,28 +8,46 @@
   <style>
     :root{ --bg:#f6efe8; --ink:#2b1a12; }
     body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:var(--bg); color:var(--ink);
-      display:flex; flex-direction:column; min-height:100vh;
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);
+      color:var(--ink);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
     }
-    main{ flex:1; display:flex; align-items:center; justify-content:center; text-align:center; }
-    h1{ margin:0; font-size:clamp(24px,4vw,36px); }
-    .waitlist-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6em 1.2em;
-  background-color: var(--ink); /* espresso brown */
-  color: var(--bg);
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-.waitlist-btn:hover {
-  background-color: #4b2e1f; /* a bit lighter on hover */
-}
 
+    /* stack text + button vertically and center */
+    main{
+      flex:1;
+      display:flex;
+      flex-direction:column;      /* ← stack vertically */
+      align-items:center;         /* center horizontally */
+      justify-content:center;     /* center vertically */
+      text-align:center;
+      gap:12px;                   /* small space between h1 and button */
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(24px,4vw,36px);
+    }
+
+    .waitlist-btn{
+      display:inline-block;
+      padding:0.6em 1.2em;
+      background-color:var(--ink); /* espresso brown */
+      color:var(--bg);
+      border:none;
+      border-radius:6px;
+      font-size:1rem;
+      text-decoration:none;
+      transition:background 0.2s ease;
+    }
+
+    .waitlist-btn:hover{
+      background-color:#4b2e1f; /* a bit lighter on hover */
+    }
   </style>
 </head>
 <body>
@@ -38,7 +56,6 @@
   <main>
     <h1>Coming Soon...</h1>
     <a href="https://brewdrops.co/waitlist" class="waitlist-btn">Join the Waitlist</a>
-
   </main>
 
   <div id="site-footer"></div>
