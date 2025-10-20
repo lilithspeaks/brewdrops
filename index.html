@@ -9,21 +9,22 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;500&family=Fraunces:wght@600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #fffdf9;
-      --bg2: #f6efe8;
-      --ink: #2b1a12;
-      --muted: rgba(43, 27, 18, 0.65);
+      --bg: #f4eac9da;         /* light cream */
+      --bg2: #935a0af1;        /* light accent */
+      --ink: #331d01;          /* brand coffee brown */
+      --muted: rgba(43,27,18,.65);
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, var(--bg), var(--bg2));
+      font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--ink); /* dark brown sides */
       color: var(--ink);
       display: flex;
       flex-direction: column;
@@ -31,24 +32,47 @@
       overflow-x: hidden;
     }
 
-    #site-header, #site-footer { width: 100%; }
+    /* Give footer a light background so text stays readable */
+    #site-footer {
+      background: #f6d1a8;
+    }
 
-    main {
+    /* Stage centers the caramel box */
+    .stage {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 40px 20px 160px;
       position: relative;
-      overflow-x: hidden;
+      z-index: 1;
+      background: var(--ink); /* dark brown sides */
     }
 
-    /* HERO IMAGE (fixed size, fixed position) */
+    /* Hand/pod image — anchored to the content box */
+    .content-box {
+      position: relative; /* ensure .hero-bg positions inside this box */
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
+      box-shadow: 0 0 40px rgba(0,0,0,0.08);
+      border-left: 1px solid rgba(80, 47, 29, 0.08);
+      border-right: 1px solid rgba(80,47,29,.08);
+      overflow: hidden;
+      padding: 40px 20px 100px; /* unchanged */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Hand image attached to content box */
     .hero-bg {
       position: absolute;
-      top: 20px;
-      right: -50px;
-      width: 720px;
+      top: 100px;
+      right: 0%;         /* scales naturally with zoom and box width */
+      width: 45%;        /* instead of fixed pixels */
+      max-width: 600px;  /* cap size on large screens */
+      height: auto;
       opacity: 0.9;
       z-index: 1;
       pointer-events: none;
@@ -56,13 +80,11 @@
     }
 
     .hero-wrapper {
-      position: relative;
+      position: centered;
       width: 100%;
       max-width: 1000px;
       text-align: center;
-      z-index: 2;
       margin: 0 auto;
-      padding: 0 20px;
     }
 
     .hero-content {
@@ -73,29 +95,40 @@
     }
 
     h1 {
-      font-family: 'Fraunces', serif;
-      font-size: 72px;
-      font-weight: 600;
-      margin: 0 0 16px;
-      letter-spacing: -0.02em;
+      font-family:'Fraunces',serif;
+      font-size:222px;
+      font-weight:600;
+      margin:0 0 2px;
+      margin-top: -50px;
+      letter-spacing:0.005em;
+      color:var(--ink);
+      position:relative;
+      left:50%;
+      transform:translateX(-50%);
+      width:max-content;
+      text-align:center;
     }
 
     h2 {
       font-size: 28px;
       font-weight: 500;
-      margin: 0 0 12px;
+      margin: 0 0 1px;
+      margin-top: 10px;
+      color: var(--ink);
     }
 
     .sub {
       font-size: 18px;
-      margin: 0 0 24px;
+      margin: 0 0 0px;
+      margin-top: 22px;
+      margin-bottom: 200px;
       color: var(--muted);
     }
 
     .desc {
       font-size: 19px;
-      margin-top: 500px;
-      margin-bottom: 30px;
+      margin-top: 300px;
+      margin-bottom: 90px;
       color: var(--ink);
       line-height: 1.7;
     }
@@ -106,18 +139,10 @@
       letter-spacing: 0.01em;
     }
 
-    /* MOBILE TWEAK (optional basic shrink) */
     @media (max-width: 768px) {
-      .hero-bg {
-        width: 300px;
-        top: 140px;
-        right: -30px;
-        opacity: 0.25;
-      }
-      .hero-content {
-        padding: 0 10px;
-      }
-      h1 { font-size: 40px; }
+      .content-box { padding: 30px 16px 100px; }
+      .hero-bg { width: 300px; top: 140px; right: -30px; opacity: 0.25; }
+      h1 { font-size: 60px; margin-bottom: 100px; }
       h2 { font-size: 22px; }
       .sub { font-size: 16px; }
       .desc { font-size: 16px; margin-top: 300px; }
@@ -130,23 +155,24 @@
 
   <div id="site-header"></div>
 
-  <main>
-    <img src="images/brewdrop-dissolvable-coffee.png?v=6" alt="" class="hero-bg" />
-
-    <div class="hero-wrapper">
-      <div class="hero-content">
-        <h1>BrewDrops</h1>
-        <h2>Reimagining coffee.</h2>
-        <p class="sub">One drop at a time.</p>
-        <p class="desc">
-          Premium coffee powder encased in an all-natural, dissolvable film.<br>
-          Simply drop, stir, and sip.<br>
-          No machines. No mess. Just flavor.
-        </p>
-        <p class="tags">Zero Waste • No Machine • PVA Free</p>
+  <div class="stage">
+    <main class="content-box">
+      <img src="images/brewdrop-dissolvable-coffee.png?v=6" alt="" class="hero-bg" />
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <h1>BrewDrops</h1>
+          <h2>Reimagining coffee.</h2>
+          <p class="sub">One drop at a time.</p>
+          <p class="desc">
+            Premium coffee powder encased in an all-natural, dissolvable film.<br>
+            Simply drop, stir, and sip.<br>
+            No machines. No mess. Just flavor.
+          </p>
+          <p class="tags">Zero Waste • No Machine • PVA Free</p>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <div id="site-footer"></div>
 
@@ -159,8 +185,6 @@
         console.error("Include failed:", file, e);
       }
     }
-
-    include("site-header", "header.html");
     include("site-footer", "footer.html");
   </script>
 
