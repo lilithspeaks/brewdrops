@@ -6,7 +6,7 @@
   <title>BrewDrops — Reimagining coffee</title>
   <link rel="icon" href="favicon.ico" />
 
-  <!-- Fonts: Fraunces (for BrewDrops title), Inter for body -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
@@ -17,6 +17,8 @@
       --ink: #2b1a12;
       --muted: rgba(43, 27, 18, 0.65);
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -29,17 +31,28 @@
       overflow-x: hidden;
     }
 
-    #site-header, #site-footer {
-      width: 100%;
-    }
+    #site-header, #site-footer { width: 100%; }
 
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 140px 20px 160px;
+      padding: 40px 20px 160px;
       position: relative;
+      overflow-x: hidden;
+    }
+
+    /* HERO IMAGE (fixed size, fixed position) */
+    .hero-bg {
+      position: absolute;
+      top: 20px;
+      right: -50px;
+      width: 720px;
+      opacity: 0.9;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
     }
 
     .hero-wrapper {
@@ -47,20 +60,9 @@
       width: 100%;
       max-width: 1000px;
       text-align: center;
-      padding: 40px 20px;
       z-index: 2;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 100px;
-      right: 0;
-      width: 680px;
-      opacity: 0.28;
-      z-index: 1;
-      pointer-events: none;
-      max-height: calc(100vh - 240px); /* Prevent image from touching footer */
-      object-fit: contain;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     .hero-content {
@@ -72,37 +74,39 @@
 
     h1 {
       font-family: 'Fraunces', serif;
-      font-size: clamp(36px, 6vw, 52px);
+      font-size: 72px;
       font-weight: 600;
       margin: 0 0 16px;
       letter-spacing: -0.02em;
     }
 
     h2 {
-      font-size: clamp(20px, 3.5vw, 28px);
+      font-size: 28px;
       font-weight: 500;
       margin: 0 0 12px;
     }
 
     .sub {
-      font-size: 1.1rem;
+      font-size: 18px;
       margin: 0 0 24px;
       color: var(--muted);
     }
 
     .desc {
-      font-size: 1.2rem;
+      font-size: 19px;
+      margin-top: 500px;
       margin-bottom: 30px;
       color: var(--ink);
       line-height: 1.7;
     }
 
     .tags {
-      font-size: 1rem;
+      font-size: 16px;
       color: var(--muted);
       letter-spacing: 0.01em;
     }
 
+    /* MOBILE TWEAK (optional basic shrink) */
     @media (max-width: 768px) {
       .hero-bg {
         width: 300px;
@@ -113,29 +117,37 @@
       .hero-content {
         padding: 0 10px;
       }
+      h1 { font-size: 40px; }
+      h2 { font-size: 22px; }
+      .sub { font-size: 16px; }
+      .desc { font-size: 16px; margin-top: 300px; }
+      .tags { font-size: 14px; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- shared header -->
   <div id="site-header"></div>
 
-  <!-- HERO -->
   <main>
+    <img src="images/brewdrop-dissolvable-coffee.png?v=6" alt="" class="hero-bg" />
+
     <div class="hero-wrapper">
-      <img src="images/brewdrop-dissolvable-coffee.png?v=5" alt="BrewDrop pod" class="hero-bg" />
       <div class="hero-content">
         <h1>BrewDrops</h1>
         <h2>Reimagining coffee.</h2>
         <p class="sub">One drop at a time.</p>
-        <p class="desc">Premium coffee powder encased in an all‑natural, dissolvable film. Simply drop, stir, and sip. No machines. No mess. Just flavor.</p>
+        <p class="desc">
+          Premium coffee powder encased in an all-natural, dissolvable film.<br>
+          Simply drop, stir, and sip.<br>
+          No machines. No mess. Just flavor.
+        </p>
         <p class="tags">Zero Waste • No Machine • PVA Free</p>
       </div>
     </div>
   </main>
 
-  <!-- shared footer -->
   <div id="site-footer"></div>
 
   <script>
