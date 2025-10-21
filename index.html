@@ -13,10 +13,12 @@
 
   <style>
     :root {
-      --bg: #f4eac9da;         /* light cream */
-      --bg2: #935a0af1;        /* light accent */
-      --ink: #331d01;          /* brand coffee brown */
-      --muted: rgba(43,27,18,.65);
+      --bg: #f7e7d715;         /* light cream */
+      --bg2: #5c330163;        /* light accent */
+      --ink: #4f2002f2;          /* brand coffee brown */
+      --muted: rgba(43, 27, 18, 0.632);
+      --back: #f0cb97;      
+      --dark: #2b1b12;
     }
 
     * { box-sizing: border-box; }
@@ -24,7 +26,7 @@
     body {
       margin: 0;
       font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: var(--ink); /* dark brown sides */
+      background: var(--back); /* dark brown sides */
       color: var(--ink);
       display: flex;
       flex-direction: column;
@@ -32,10 +34,7 @@
       overflow-x: hidden;
     }
 
-    /* Give footer a light background so text stays readable */
-    #site-footer {
-      background: #f6d1a8;
-    }
+    
 
     /* Stage centers the caramel box */
     .stage {
@@ -45,7 +44,7 @@
       align-items: flex-start;
       position: relative;
       z-index: 1;
-      background: var(--ink); /* dark brown sides */
+      background: var(--back); /* dark brown sides */
     }
 
     /* Hand/pod image — anchored to the content box */
@@ -55,9 +54,6 @@
       max-width: 1300px;
       margin: 0 auto;
       background: linear-gradient(180deg, var(--bg), var(--bg2));
-      box-shadow: 0 0 40px rgba(0,0,0,0.08);
-      border-left: 1px solid rgba(80, 47, 29, 0.08);
-      border-right: 1px solid rgba(80,47,29,.08);
       overflow: hidden;
       padding: 40px 20px 100px; /* unchanged */
       display: flex;
@@ -129,7 +125,7 @@
       font-size: 19px;
       margin-top: 300px;
       margin-bottom: 90px;
-      color: var(--ink);
+      color: var(--dark);
       line-height: 1.7;
     }
 
