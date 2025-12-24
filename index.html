@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,157 +14,233 @@
     height: 100%;
     font-family: 'Fraunces', serif;
     overflow: hidden;
-    background-color: #fffdf9;
-    color: #3a1f06;
+    background-color: #fffaf4;
+    color: #4b3219;
   }
 
-  b, strong { font-weight: 800; color: #3a1f06; }
+  b, strong { font-weight: 800; color: #2f1909; }
   em, i { font-style: italic; }
 
-  /* --- header --- */
   header {
     position: fixed;
     top: 0; left: 0; width: 100%;
-    padding: 1.1rem 2rem;
-    background: rgba(255,253,249,0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(60,40,10,0.08);
+    padding: 1.1rem 2.25rem;
+    background: rgba(255,250,244,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(60,40,10,0.04);
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 10;
+    z-index: 20;
   }
 
   header .logo {
-    font-size: 1rem;
-    letter-spacing: 0.15em;
+    font-size: 0.98rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #3a1f06;
+    color: #2f1909;
     font-weight: 700;
   }
 
-  .socials { display: flex; gap: 1.8rem; align-items: center; margin-right: 3.5rem; }
+  .socials { display: flex; gap: 1.6rem; align-items: center; margin-right: 3.2rem; }
   .social-icon {
-    color: #3a1f06; font-size: 1.4rem;
-    transition: transform .25s ease, opacity .25s ease, color .3s ease;
+    color: #3a1f06; font-size: 1.35rem;
+    opacity: 0.9;
+    transition: transform .25s ease, opacity .25s ease;
   }
-  .social-icon:hover { transform: translateY(-2px); opacity: .75; color: #7b5a2b; }
+  .social-icon:hover { transform: translateY(-2px); opacity: .65; }
 
-  /* --- scroll container --- */
-  .scroll-wrap { height: 100%; width: 100%; overflow-y: auto; scroll-snap-type: y mandatory; }
+  .scroll-wrap {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    position: relative;
+    scroll-behavior: smooth;
+  }
+
+  .scroll-wrap::before {
+    content: "";
+    position: fixed;
+    right: -6%;
+    top: 18%;
+    width: 40%;
+    height: 60%;
+    background: radial-gradient(circle at 30% 20%, #f3d1a0 0%, #e4b887 35%, rgba(255,255,255,0) 75%);
+    opacity: 0.45;
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
   section {
     height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    scroll-snap-align: start; scroll-snap-stop: always;
-    opacity: 0; transform: translateY(50px);
-    transition: opacity 700ms ease, transform 700ms ease;
-    background-color: #fffdf9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 800ms ease, transform 800ms ease;
+    padding-top: 3.5rem;
   }
   section.visible { opacity: 1; transform: translateY(0); }
 
-  /* --- hero section --- */
   #company {
-    display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 4rem 2vw;
-    background: radial-gradient(circle at 35% 20%, #fffdf9 0%, #faf6f0 100%);
-    text-align: left;
+    justify-content: center;
+    padding: 5.5rem 8vw;
+    background: radial-gradient(circle at 20% 15%, #fffdf9 0%, #f9f1e6 40%, #fffaf4 100%);
+    position: relative;
   }
 
-  #company .hero-text { width: 100%; }
+  #company .hero-text { max-width: 780px; }
 
-  #company .title h1 {
+  #company h1 {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    font-size: 6rem;
+    font-size: 5rem;
     letter-spacing: -0.03em;
-    color: #3a1f06;
-    margin: 0 0 2rem 0;
-    animation: fadeInLogo 1.5s ease-in-out;
-  }
-
-  @keyframes fadeInLogo {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  #company .purpose {
-    margin-top: 3rem;
-    padding-left: 0.2rem;
+    margin: 0 0 1.2rem;
+    color: #2f1909;
   }
 
   #company .purpose p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin: 0.8rem 0;
-    transition: color 0.3s ease;
+    font-size: 1.18rem;
+    line-height: 1.9;
+    margin: 1rem 0;
+    max-width: 660px;
   }
 
-  #company .purpose p:hover { color: #5b3413; }
+  .subtle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 1.2rem;
+  }
 
-  /* --- product + dissolve section --- */
+  .scroll-cue{
+    position:absolute;
+    left: 8vw;
+    bottom: 2.1rem;
+    display:flex;
+    gap:.7rem;
+    align-items:center;
+    opacity:.7;
+    font-size:.92rem;
+  }
+
+  .scroll-cue .chev{
+    width:34px;height:34px;border-radius:999px;
+    display:grid;place-items:center;
+    border:1px solid rgba(60,40,10,0.12);
+    background: rgba(255,250,244,0.7);
+    animation: bob 1.6s ease-in-out infinite;
+  }
+
+  @keyframes bob{50%{transform:translateY(4px)}}
+
   #product-combined {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 6rem;
-    padding: 6rem 10vw;
-    background: #fffdf9;
-  }
-
-  #product-combined .left {
-    text-align: center;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 4.8rem;
+    padding: 5.5rem 8vw;
+    background: #fff8ef;
+    position: relative;
   }
 
   #product-combined .left img {
-    width: 240px;
-    height: auto;
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
+    width: 230px;
+    filter: drop-shadow(0 12px 28px rgba(0,0,0,0.12));
     animation: float 4s ease-in-out infinite alternate;
   }
 
+  @keyframes float { to { transform: translateY(-10px); } }
+
   #product-combined .right {
-    max-width: 520px;
+    max-width: 640px;
   }
 
-  #product-combined .right .product-title { font-size: 2.2rem; margin-bottom: 1.5rem; }
-  #product-combined .right .caption { font-size: 1.05rem; font-style: italic; margin-top: 1rem; color: #4a2d10; }
-  #product-combined .right .tagline { margin-top: 2rem; font-size: 1.4rem; }
-
-  #product-combined .disappear { margin-top: 2rem; }
-  #product-combined .disappear p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 1rem; }
-  #product-combined .sustainability {
-    font-size: 0.95rem;
-    font-weight: 400;
-    opacity: 0.9;
-    margin-top: 1rem;
-    letter-spacing: 0.4px;
-    color: #3a1f06;
+  .product-title {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+    color: #2f1909;
   }
 
-  @keyframes float {
-    from { transform: translateY(0px); }
-    to { transform: translateY(-10px); }
+  .caption {
+    font-style: italic;
+    opacity: .9;
+    margin-bottom: 1.4rem;
   }
 
-  /* --- footer --- */
-  footer.brewdrops-footer {
-    background: linear-gradient(180deg, #e9dfd2 0%, #c4a67d 100%);
-    text-align: center;
-    padding: 2.5rem 1rem 2rem;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    font-family: 'Fraunces', serif;
-    color: #3a1f06;
-    box-shadow: 0 -3px 12px rgba(0,0,0,0.05);
-    letter-spacing: 0.4px;
+  .disappear p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: .9rem;
   }
-  .brewdrops-footer .tagline { font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 800; }
-  .brewdrops-footer .info { font-size: 0.9rem; opacity: 0.9; margin: 0; }
 
-  @media(max-width: 900px) {
-    html,body { overflow: auto; }
-    #company .title h1 { font-size: 3.8rem; text-align: center; }
-    #product-combined { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+  .sustainability {
+    font-size: .9rem;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    opacity: .9;
+  }
+
+  .tagline {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+  }
+
+  #waitlist {
+    padding: 5.5rem 8vw;
+    background: radial-gradient(circle at 75% 20%, #f8e7d4 0%, #fffaf4 55%);
+  }
+
+  .wait-wrap { max-width: 780px; }
+
+  .wait-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    margin-bottom: .8rem;
+  }
+
+  .wait-sub {
+    font-size: 1.12rem;
+    line-height: 1.85;
+    margin-bottom: 1.6rem;
+  }
+
+  .form-row {
+    display:flex;
+    gap:.8rem;
+    flex-wrap:wrap;
+  }
+
+  .form-row input {
+    flex:1;
+    padding:.95rem 1.05rem;
+    border-radius:1rem;
+    border:1px solid rgba(60,40,10,.12);
+  }
+
+  .btn {
+    padding:.95rem 1.05rem;
+    border-radius:1rem;
+    background:#2f1909;
+    color:#fffaf4;
+    font-weight:800;
+    border:none;
+    cursor:pointer;
+  }
+
+  .micro {
+    margin-top:.9rem;
+    font-size:.9rem;
+    opacity:.7;
+  }
+
+  footer {
+    background: linear-gradient(180deg,#eadfce,#c7a87f);
+    text-align:center;
+    padding:2.4rem 1rem;
   }
 </style>
 </head>
@@ -176,57 +251,77 @@
   <div class="logo">BrewDrops</div>
   <div class="socials">
     <a href="https://instagram.com/brewdrops.co" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://tiktok.com/@brewdrops.co" target="_blank" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://www.tiktok.com/@brewdrops.co" target="_blank" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
     <a href="https://linkedin.com/company/brewdrops/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
   </div>
 </header>
 
-<div class="scroll-wrap" id="scroll-wrap">
+<div class="scroll-wrap">
 
-  <!-- hero section -->
-  <section id="company">
-    <div class="hero-text">
-      <div class="title">
-        <h1>BrewDrops</h1>
-      </div>
-      <div class="purpose">
-        <p><strong>We exist to:</strong> make sustainability effortless.</p>
-        <p><strong>By:</strong> weaving dissolvable design into the modern ritual.</p>
-        <p><strong>Thereby:</strong> transforming the definition of <em>packaged</em>.</p>
-        <p><strong>For:</strong> Millions of people worldwide. (<strong><em>And you.</em></strong>)</p>
-      </div>
+<section id="company">
+  <div class="hero-text">
+    <h1>BrewDrops</h1>
+    <div class="purpose">
+      <p><strong>A dissolvable espresso format</strong> designed for everyday use.</p>
+      <p>No machine. No pods. Nothing left behind.</p>
+      <p class="subtle">Currently in testing.</p>
     </div>
-  </section>
+  </div>
+  <a class="scroll-cue" href="#product-combined">
+    <span class="chev"><i class="fa-solid fa-chevron-down"></i></span>
+    <span>Scroll</span>
+  </a>
+</section>
 
-  <!-- product section (image left, text right) -->
-  <section id="product-combined">
-    <div class="left">
-      <img src="images/hero.png" alt="BrewDrops pod">
+<section id="product-combined">
+  <div class="left">
+    <img src="images/hero.png" alt="BrewDrops pod">
+  </div>
+  <div class="right">
+    <p class="product-title"><strong>This</strong> is our first product.</p>
+    <p class="caption">A shot of espresso.</p>
+
+    <div class="disappear">
+      <p>A dissolvable espresso concentrate that disappears on contact with water.</p>
+      <p>No machine required. No single-use waste.</p>
+      <p>Designed for real daily life.</p>
+      <p class="sustainability">No machine • Plastic- and PVA-free</p>
     </div>
 
-    <div class="right">
-      <p class="product-title"><strong>This</strong> is our first product.</p>
-      <p class="caption">A shot of espresso.</p>
-      <div class="disappear">
-        <p>The specialty flavor of our premium light-roast Arabica espresso isn’t the only thing that sets us apart.</p>
-        <p>It’s the way it <em>disappears.</em></p>
-        <p>Drop into water and watch it dissolve.</p>
-        <p class="sustainability">No machine • Zero waste • Plastic/PVA free</p>
-      </div>
-      <p class="tagline">Now this is <strong>Not Your Average Joe.</strong></p>
-    </div>
-  </section>
+    <p class="tagline">Not Your Average Joe.</p>
+  </div>
+</section>
 
-  <footer class="brewdrops-footer">
-    <p class="tagline">live simply, simply live.</p>
-    <p class="info">© 2025 BrewDrops LLC. Made in America 🇺🇸</p>
-  </footer>
+<section id="waitlist">
+  <div class="wait-wrap">
+    <h2 class="wait-title">Pre-launch</h2>
+    <p class="wait-sub">
+      We’re currently testing formulation and format.
+      Join the waitlist for updates on progress and first releases.
+    </p>
+
+    <form class="form-row">
+      <input type="email" placeholder="Your email" required>
+      <button class="btn">Join the waitlist</button>
+    </form>
+
+    <div class="micro">No spam. Just real updates.</div>
+  </div>
+</section>
+
+<footer>
+  <p class="tagline">live simply, simply live.</p>
+  <p>© 2025 BrewDrops</p>
+</footer>
+
 </div>
 
 <script>
   const sections = document.querySelectorAll('section');
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
   },{threshold:0.55});
   sections.forEach(s=>io.observe(s));
 </script>
