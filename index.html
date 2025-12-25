@@ -95,34 +95,31 @@ section {
 }
 section.visible { opacity: 1; transform: translateY(0); }
 
-/* ---------- HERO ---------- */
+/* HERO */
 #company {
   background: radial-gradient(circle at 20% 15%, #fffdf9 0%, #f9f1e6 40%, #fffaf4 100%);
   position: relative;
 }
 
-/* KEEP TITLE LEFT */
 .hero-title {
   max-width: 780px;
   position: relative;
   z-index: 2;
 }
 
-/* BIGGER TITLE (left stays left) */
 #company h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: 6.5rem;     /* bigger */
+  font-size: 6.5rem;
   letter-spacing: -0.03em;
   margin: 0 0 0.8rem;
   color: #2f1909;
 }
 
-/* MOVE ONLY THE COPY TO THE RIGHT */
 .hero-copy {
   position: absolute;
   right: 8vw;
-  top: 46%;              /* tweak this if you want higher/lower */
+  top: 46%;
   transform: translateY(-50%);
   width: min(420px, 38vw);
   z-index: 3;
@@ -142,7 +139,6 @@ section.visible { opacity: 1; transform: translateY(0); }
   margin-top: 1.1rem;
 }
 
-/* IMAGE — UNCHANGED */
 .hero-image {
   position: absolute;
   right: 8vw;
@@ -155,32 +151,45 @@ section.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes float { to { transform: translateY(-12px); } }
 
-/* ---------- PRODUCT ---------- */
+/* PRODUCT */
 #product-combined { background: #fff8ef; }
-
-.product-title {
-  font-size: 2rem;
-  margin-bottom: .4rem;
-  color: #2f1909;
-}
+.product-title { font-size: 2rem; margin-bottom: .4rem; color: #2f1909; }
 .caption { font-style: italic; opacity: .9; margin-bottom: 1.4rem; }
 .disappear p { font-size: 1.15rem; line-height: 1.9; margin-bottom: .9rem; }
 .sustainability { font-size: .9rem; letter-spacing: .4px; text-transform: uppercase; opacity: .9; }
 .tagline { margin-top: 2rem; font-size: 1.3rem; }
 
-/* ---------- WAITLIST ---------- */
+/* WAITLIST */
 #waitlist { background: radial-gradient(circle at 75% 20%, #f8e7d4 0%, #fffaf4 55%); }
 .wait-wrap { max-width: 780px; }
 .wait-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: .8rem; }
 .wait-sub { font-size: 1.12rem; line-height: 1.85; margin-bottom: 1.6rem; }
-.form-row { display: flex; gap: .8rem; flex-wrap: wrap; }
-.form-row input { flex: 1; padding: .95rem 1.05rem; border-radius: 1rem; border: 1px solid rgba(60,40,10,.12); }
-.btn { padding: .95rem 1.05rem; border-radius: 1rem; background: #2f1909; color: #fffaf4; font-weight: 800; border: none; cursor: pointer; }
+
+.form-row {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+.form-row input {
+  flex: 1;
+  padding: .95rem 1.05rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(60,40,10,.12);
+}
+.btn {
+  padding: .95rem 1.05rem;
+  border-radius: 1rem;
+  background: #2f1909;
+  color: #fffaf4;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+}
 .micro { margin-top: .9rem; font-size: .9rem; opacity: .7; }
 
 footer { background: linear-gradient(180deg,#eadfce,#c7a87f); text-align:center; padding:2.4rem 1rem; }
 
-/* Mobile: stack copy below title */
+/* MOBILE */
 @media (max-width: 900px){
   #company h1{ font-size: 4rem; }
   .hero-copy{
@@ -215,18 +224,11 @@ footer { background: linear-gradient(180deg,#eadfce,#c7a87f); text-align:center;
 <div class="scroll-wrap">
 
 <section id="company">
-  <!-- TITLE stays left -->
-  <div class="hero-title">
-    <h1>BrewDrops</h1>
-  </div>
-
-  <!-- COPY only (moved right) -->
+  <div class="hero-title"><h1>BrewDrops</h1></div>
   <div class="hero-copy">
     <p><strong>A dissolvable espresso format</strong> designed for everyday use.</p>
     <p class="subtle">Currently in testing.</p>
   </div>
-
-  <!-- IMAGE unchanged -->
   <img src="images/hero.png" alt="BrewDrops pod" class="hero-image">
 </section>
 
@@ -239,12 +241,12 @@ footer { background: linear-gradient(180deg,#eadfce,#c7a87f); text-align:center;
       Join the waitlist for updates on progress and first releases.
     </p>
 
-    <form class="form-row">
-      <input type="email" placeholder="Your email" required>
-      <button class="btn">Join the waitlist</button>
+    <form class="form-row" id="waitlist-form">
+      <input id="waitlist-email" type="email" placeholder="Your email" required>
+      <button class="btn" type="submit">Join the waitlist</button>
     </form>
-
-    <div class="micro">No spam. Just real updates.</div>
+    <div class="micro" id="waitlist-micro">No spam. Just real updates.</div>
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
   </div>
 </section>
 
@@ -262,8 +264,40 @@ const io = new IntersectionObserver(entries => {
     if (e.isIntersecting) e.target.classList.add('visible');
   });
 }, { threshold: 0.55 });
-
 sections.forEach(s => io.observe(s));
+
+const FORM_ID = "1FAIpQLScNZsayFDVdzDYsjV10p4So97HKA0rn9CiLAw4kf_zYc3QINQ";
+const ENTRY_ID = "935444443";
+
+const form = document.getElementById("waitlist-form");
+const emailInput = document.getElementById("waitlist-email");
+const micro = document.getElementById("waitlist-micro");
+
+form.action = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+form.method = "POST";
+form.target = "hidden_iframe";
+
+form.addEventListener("submit", () => {
+  const email = (emailInput.value || "").trim();
+  if (!email) return;
+
+  let hidden = form.querySelector(`input[name="entry.${ENTRY_ID}"]`);
+  if (!hidden) {
+    hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = `entry.${ENTRY_ID}`;
+    form.appendChild(hidden);
+  }
+  hidden.value = email;
+
+  setTimeout(() => {
+    form.innerHTML = `<div style="font-size:1.1rem; line-height:1.7; color:#2f1909;">
+      You’re on the list. <strong>Welcome.</strong><br>
+      <span style="opacity:.75;font-size:.95rem;">We’ll email when there’s something real to share.</span>
+    </div>`;
+    if (micro) micro.style.display = "none";
+  }, 250);
+});
 </script>
 
 </body>
